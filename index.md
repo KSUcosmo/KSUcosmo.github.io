@@ -1,5 +1,5 @@
 # 京都産業大学 宇宙論研究室
-## 理学部 宇宙物理・気象学科 / 同大学院 理学研究科 物理学専攻
+#### [理学部](https://www.kyoto-su.ac.jp/faculty/sc/) [宇宙物理・気象学科](https://www.kyoto-su.ac.jp/faculty/sc/uchu.html) / 同大学院 [理学研究科](https://www.kyoto-su.ac.jp/graduateschool/g_sc/) [物理学専攻](https://www.kyoto-su.ac.jp/graduateschool/g_sc/g_ph/index.html)
 
 ## 研究テーマ
 ### 観測的宇宙論
