@@ -37,4 +37,9 @@
 ## アクセス
 * 京都市営地下鉄烏丸線「北大路駅」より京都市バス「北３系統」に乗車、終点「京都産大前」下車
 * 京都市営地下鉄烏丸線「国際会館駅」より京都バス「40系統」に乗車、終点「京都産業大学」下車
-* 京阪電車「出町柳駅」より京都バス「30、32、34、35、36系統」に乗車、「京都産業大学」下車
+* 京阪電車「出町柳駅」より京都バス「32、34、35、36系統」に乗車、「京都産業大学」下車（35, 36系統は授業期間中のみ）
+* 叡山電車「二軒茶屋」より徒歩約15分（授業期間中は無料シャトルバス運行）
+* （授業期間中のみは上賀茂神社より無料シャトルバス運行）
+* 京都市バス時刻表（[北大路バスターミナル発](https://www2.city.kyoto.lg.jp/kotsu/busdia/hyperdia/70711001.htm)、[京都産大前発](https://www2.city.kyoto.lg.jp/kotsu/busdia/hyperdia/47530001.htm)）
+* 京都バス運行情報および時刻表（[出町柳駅前発](https://www.kyotobus.jp/route/timetable/kana19/demachiyanagiekimae.html)、[国際会館駅前発](https://www.kyotobus.jp/route/timetable/kana10/kokusaikaikanekimae.html)、[京都産業大学発](https://www.kyotobus.jp/route/timetable/kana07/kyotosangyodaigakumae.html)）
+* 京都産業大学[シャトルバス](https://www.kyoto-su.ac.jp/bus/)運行情報および時刻表
