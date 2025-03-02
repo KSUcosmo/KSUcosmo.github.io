@@ -48,6 +48,9 @@ SuMIRe（Hyper Suprime-Cam: HSC + Prime Focus Spectrograph: PFS), Roman Space Te
 > 2/6, 7は雪の降る中、京産大理学部宇宙物理・気象学科の卒業研究発表会が行われました！台風や線状降水帯のような身近な話題から、宇宙の大規模構造や宇宙マイクロ波背景放射などの宇宙の「果て」に迫る大スケールの話題まで聞けて、お腹いっぱいです！<a href="https://twitter.com/hashtag/%E5%AE%87%E5%AE%99%E3%81%AE%E4%BA%AC%E7%94%A3?src=hash&amp;ref_src=twsrc%5Etfw">#宇宙の京産</a> <a href="https://twitter.com/hashtag/%E5%8D%92%E6%A5%AD%E7%A0%94%E7%A9%B6?src=hash&amp;ref_src=twsrc%5Etfw">#卒業研究</a> <a href="https://twitter.com/hashtag/%E5%AE%87%E5%AE%99%E7%89%A9%E7%90%86%E5%AD%A6?src=hash&amp;ref_src=twsrc%5Etfw">#宇宙物理学</a> <a href="https://twitter.com/hashtag/%E6%B0%97%E8%B1%A1%E5%AD%A6?src=hash&amp;ref_src=twsrc%5Etfw">#気象学</a>
 > [元のツイートを見る](https://twitter.com/username/status/1888170859812028851?ref_src=twsrc%5Etfw)
 
+
+https://twitter.com/username/status/1888170859812028851?ref_src=twsrc%5Etfw
+
 ## 所在地
 京都市北区上賀茂本山 京都産業大学 万有館3F B314研究室
 
