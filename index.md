@@ -47,7 +47,9 @@ SuMIRe（Hyper Suprime-Cam: HSC + Prime Focus Spectrograph: PFS), Roman Space Te
 * [instagram@ksucosmo](https://www.instagram.com/ksucosmo/)
 * [X@KSUCosmo](https://x.com/KSUCosmo)
 
+{% raw %}
 <iframe src="https://twitframe.com/show?url=https://x.com/KSUCosmo/status/1888170859812028851" width="550" height="400"></iframe>
+{% endraw %}
 
 ## 所在地
 京都市北区上賀茂本山 京都産業大学 万有館3F B314研究室
