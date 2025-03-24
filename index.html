@@ -1,285 +1,494 @@
 <!DOCTYPE html>
 <html lang="ja">
-<style>
-/* モダンでレスポンシブなスタイル */
-    .content-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 20px;
-        line-height: 1.6;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-    }
-
-    h1 {
-        color: #1a237e;
-        margin-bottom: 10px;
-        padding-bottom: 10px;
-        border-bottom: 3px solid #1a237e;
-    }
-
-    h4 {
-        margin-top: 0;
-        margin-bottom: 30px;
-        color: #555;
-        font-weight: normal;
-    }
-
-    h4 a {
-        color: #3949ab;
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    h4 a:hover {
-        color: #1a237e;
-        text-decoration: underline;
-    }
-    h2 {
-        color: #333;
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
-        margin-top: 30px;
-    }
-
-    h3 {
-        color: #444;
-        margin-top: 20px;
-    }
-
-    p {
-        margin-bottom: 20px;
-        text-align: justify;
-    }
-
-    /* キーワードをより読みやすくするためのスタイル */
-    .keywords {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .keyword {
-        background-color: #f0f0f0;
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-size: 0.9em;
-    }
-    /* 観測計画用のスタイル - キーワードとは少し差別化 */
-    .projects {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 20px;
-        align-items: center;
-    }
-
-    .project {
-        background-color: #e3f2fd;
-        padding: 6px 14px;
-        border-radius: 5px;
-        font-size: 0.95em;
-        border-left: 3px solid #1976d2;
-    }
-
-    /* 括弧などの接続テキスト用 */
-    .connector {
-        margin: 0 5px;
-        color: #666;
-    }
-
-    /* フッター用のCSS */
-    .footer {
-        background-color: #f5f5f5;
-        border-top: 1px solid #e0e0e0;
-        padding: 30px 0;
-        margin-top: 40px;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
-    }
-
-    .footer-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 20px;
-        line-height: 1.6;
-    }
-
-    .footer-copyright {
-        margin-bottom: 20px;
-        font-size: 14px;
-        color: #555;
-    }
-
-    .footer-contact {
-        font-size: 14px;
-        color: #666;
-    }
-
-    .footer-contact h3 {
-        margin-top: 0;
-        margin-bottom: 10px;
-        font-size: 16px;
-        color: #444;
-    }
-
-    .footer-contact a {
-        color: #1a73e8;
-        text-decoration: none;
-    }
-
-    .footer-contact a:hover {
-        text-decoration: underline;
-    }
-
-    .footer address {
-        font-style: normal;
-        margin-bottom: 15px;
-    }
-</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>京都産業大学 宇宙論研究室</title>
+    <style>
+        /* ヘッダー部分 */
+        .header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px;
+            background: #003366;
+            color: white;
+        }        /* タブのスタイル */
+        .tabs {
+            display: flex;
+            width: 100%;
+            max-width: 1000px; /* 必要に応じて調整 */
+            height: 100vh;  /* 画面高の80%を確保 */
+            margin: auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        /* タブボタンのコンテナ（左側） */
+        .tab-buttons {
+            display: flex;
+            flex-direction: column;
+            width: 150px; /* タブの横幅 */
+            background: #f0f0f0;
+            border-right: 1px solid #ccc;
+            height: 100%; /* 縦スクロールしないように固定 */
+        }
+        /* タブボタンのスタイル */
+        .tab-button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: #e0e0e0;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        /* アクティブなタブボタン */
+        .tab-button.active {
+            background: gray;
+            color: white;
+        }
+        /* タブのコンテンツエリア */
+        .tab-content {
+            flex-grow: 1; /* 残りの領域をすべて使用 */
+            padding: 20px;
+            line-height: 1.5;
+            max-height: calc(100vh - 50px); /* 適度な高さに調整 */
+            background: #fff;
+            overflow-y: auto; /* ここがポイント：コンテンツのみスクロール可能 */
+            height: 100%;
+        }
+        /* 各タブの内容（初期は非表示） */
+        .tab-panel {
+            display: none;
+        }
+        /* アクティブなタブの内容を表示 */
+        .tab-panel.active {
+            display: block;
+        }
+
+        h1 {
+            color: #1a237e;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #1a237e;
+        }
+
+        h4 {
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #555;
+            font-weight: normal;
+        }
+
+        h4 a {
+            color: #3949ab;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        h4 a:hover {
+            color: #1a237e;
+            text-decoration: underline;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #444;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .long-text {
+            text-indent: 1rem;
+            margin-bottom: 5px;
+            text-align: justify;
+        }
+
+        /* キーワードをより読みやすくするためのスタイル */
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .keyword {
+            background-color: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        /* 観測計画用のスタイル - キーワードとは少し差別化 */
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .project {
+            background-color: #e3f2fd;
+            padding: 6px 14px;
+            border-radius: 5px;
+            font-size: 0.95em;
+            border-left: 3px solid #1976d2;
+        }
+
+        /* 括弧などの接続テキスト用 */
+        .connector {
+            margin: 0 5px;
+            color: #666;
+        }
+
+        /* フッター用のCSS */
+        .footer {
+            /* text-align: center; */
+            background-color: #f5f5f5;
+            border-top: 1px solid #e0e0e0;
+            padding: 10px;
+            margin-top: 40px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .footer-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            line-height: 1.6;
+        }
+
+        .footer-copyright {
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .footer-contact {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer-contact h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .footer-contact a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        .footer address {
+            font-style: normal;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
-    <div class="content-container">
-    <h1>京都産業大学 宇宙論研究室</h1>
-    <h4><a href="https://www.kyoto-su.ac.jp/faculty/sc/">理学部</a> <a href="https://www.kyoto-su.ac.jp/faculty/sc/uchu.html">宇宙物理・気象学科</a> / 同大学院 <a href="https://www.kyoto-su.ac.jp/graduateschool/g_sc/">理学研究科</a> <a href="https://www.kyoto-su.ac.jp/graduateschool/g_sc/g_ph/index.html">物理学専攻</a></h4>
-
-    <h2>研究テーマ</h2>
-    <h3>観測的宇宙論</h3>
-    <p><b>観測可能な最大スケール</b>における宇宙のあり方を、理論モデルと観測データを比較することで調査しています。特に、宇宙の大規模構造に関する<b>統計的</b>な研究に注力しています。研究手法としては、大規模数値計算、機械学習などの統計モデルの導入に強みがあります。最近では、すばる望遠鏡Hyper Suprime-Camによる弱重力レンズ効果サーベイをはじめとする大規模観測計画との連携を推進し、単なる概念実証にとどまらない、活きたデータサイエンス手法の開発・応用を目指しています。</p>
-    <h3>キーワード</h3>
-    <div class="keywords">
-        <span class="keyword">宇宙論モデルの検証</span>
-        <span class="keyword">ダークエネルギー</span>
-        <span class="keyword">ダークマター</span>
-        <span class="keyword">インフレーション</span>
-        <span class="keyword">ニュートリノ質量の謎</span>
-        <span class="keyword">宇宙の大規模構造</span>
-        <span class="keyword">摂動論</span>
-        <span class="keyword">N体シミュレーション</span>
-        <span class="keyword">データ科学的手法の応用</span>
-        <span class="keyword">宇宙ビッグデータ</span>
-        <span class="keyword">シミュレーションに基づく統計推論</span>
-        <span class="keyword">機械学習</span>
-        <span class="keyword">エミュレータ</span>
-        <span class="keyword">銀河サーベイ</span>
-      </div>
-    <h3>参画中の観測計画</h3>
-    <div class="projects">
-        <span class="project"><a href="https://sumire.ipmu.jp/">SuMIRe</a></span>
-        <span class="project"><a href="https://hsc.mtk.nao.ac.jp/ssp/home/home_jp/">HSC</a></span>
-        <span class="project"><a href="https://pfs.ipmu.jp/ja/index.html">PFS</a></span>
-        <span class="project"><a href="https://roman.gsfc.nasa.gov/">Roman Space Telescope</a></span>
-        <span class="project"><a href="https://www.esa.int/Science_Exploration/Space_Science/Euclid">Euclid</a></span>
-      </div>
-    <h2>メンバー</h2>
-    <h3>スタッフ</h3>
-    <ul>
-        <li>西道 啓博 准教授 (経歴や担当講義については<a href="https://www.kyoto-su.ac.jp/faculty/professors/sc/nishimichi_takahiro.html">こちら</a>、詳細な研究業績については<a href="https://researchmap.jp/tnishimichi">こちら</a>)</li>
-    </ul>
-    <h3>研究員</h3>
-    <ul>
-        <li>小林 洋祐 （日本学術振興会特別研究員PD）</li>
-        <li>新研究員 （科研費研究員、2025年7月着任予定）</li>
-    </ul>
-    <h3>大学院生</h3>
-    <h4>博士前期課程1年</h4>
-    <ul>
-        <li>佐久間 竜雅</li>
-        <li>中西 稜</li>
-        <li>新田 悠翔</li>
-    </ul>
-    <h3>学部4年生</h3>
-    <ul>
-        <li>太陽系を彷徨う猫</li>
-        <li>銀河系を眺める犬</li>
-        <li>銀河団の中央に佇む像</li>
-        <li>ダークマターを食べる熊</li>
-        <li>インフレーションを起こした蛇</li>
-    </ul>
-
-    <h2>卒業生の進路</h2>
-    <li><a href="https://www.phys.s.u-tokyo.ac.jp/lp/graduate/">東京大学大学院理学系研究科物理学専攻</a>（修士課程）</li>
-    <li><a href="https://www.st.hirosaki-u.ac.jp/">弘前大学大学院理工学研究科理工学専攻</a>（博士前期課程）</li>
-    <li>京都産業大学大学院理学研究科物理学専攻（博士前期課程）</li>
-
-    <h2>主な共同研究パートナー </h2>
-    <li>東京大学 <a href="https://www.ipmu.jp/ja">カブリ数物連携宇宙研究機構(Kavli IPMU)</a></li>
-    <li>京都大学 <a href="https://www.yukawa.kyoto-u.ac.jp/">基礎物理学研究所</a> 宇宙分野</li>
-    <li>名古屋大学 <a href="https://www.astro-th.phys.nagoya-u.ac.jp/c-lab/index.html">宇宙論研究室(C研)</a></li>
-    <li>千葉大学 <a href="https://www.astro.phys.s.chiba-u.ac.jp/">宇宙物理学研究室</a></li>
-    <li>一橋大学 <a href="https://mototakelab.github.io/index.html">Data Driven Science Group</a></li>
-    <li>日本大学 生産工学部 <a href="https://www.cit.nihon-u.ac.jp/department/liberal/">教養・基礎科学系</a></li>
-    <li>中央研究院天文及天文物理研究所(ASIAA) <a href="https://idv.sinica.edu.tw/teppei/study/members.html">Cosmology Group</a></li>
-    <li>ペンシルバニア州立大学 <a href="https://ctoc.igc.psu.edu/">Center for Theoretical and Observational Cosmology</a></li>
-    <li>パルマ大学 <a href="https://smfi.unipr.it/en/node/3294">Cosmology and Astro Physics Section</a></li>
-    <li>ウィーン大学 <a href="https://cosmology.univie.ac.at/">Data Science in Cosmology & Astrophysics Group</a></li>
-    (2025年4月現在、定期的なミーティングを継続中または同一科研費等参加中の研究機関)
-
-    <h2>主な研究成果</h2>
-    <li><a href="http://www.kyoto-u.ac.jp/ja/research/research_results/2019/191008_2.html">宇宙の大規模構造の複雑な統計パターンを高速予言する人工知能（AI）ツールを開発 －宇宙ビッグデータのAI分析に向けて</a></li>
-    <li><a href="https://www.kyoto-u.ac.jp/ja/research-news/2021-03-19-0">日本チームのバーチャル宇宙の解析に米国の2チームが挑戦 －宇宙の根源的な謎に迫る精密宇宙論への確かな一歩</a></li>
-    <li><a href="https://www.kyoto-u.ac.jp/ja/research-news/2022-07-21-3">AIとスーパーコンピュータで広大な銀河地図を解読 －宇宙の成り立ちを決める物理量を精密に測定</a></li>
-
-
-    <h2>情報発信</h2>
-    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DGLKsjgTzg9/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DGLKsjgTzg9/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">この投稿をInstagramで見る</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DGLKsjgTzg9/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">京都産業大学宇宙論研究室(@ksucosmo)がシェアした投稿</a></p></div></blockquote>
-<script async src="https://www.instagram.com/embed.js"></script>
-
-    <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">2/6, 7は雪の降る中、京産大理学部宇宙物理・気象学科の卒業研究発表会が行われました！台風や線状降水帯のような身近な話題から、宇宙の大規模構造や宇宙マイクロ波背景放射などの宇宙の「果て」に迫る大スケールの話題まで聞けて、お腹いっぱいです！<a href="https://twitter.com/hashtag/%E5%AE%87%E5%AE%99%E3%81%AE%E4%BA%AC%E7%94%A3?src=hash&amp;ref_src=twsrc%5Etfw">#宇宙の京産</a> <a href="https://twitter.com/hashtag/%E5%8D%92%E6%A5%AD%E7%A0%94%E7%A9%B6?src=hash&amp;ref_src=twsrc%5Etfw">#卒業研究</a> <a href="https://twitter.com/hashtag/%E5%AE%87%E5%AE%99%E7%89%A9%E7%90%86%E5%AD%A6?src=hash&amp;ref_src=twsrc%5Etfw">#宇宙物理学</a> <a href="https://twitter.com/hashtag/%E6%B0%97%E8%B1%A1%E5%AD%A6?src=hash&amp;ref_src=twsrc%5Etfw">#気象学</a> <a href="https://t.co/c8tpxTIGc0">pic.twitter.com/c8tpxTIGc0</a></p>&mdash; 京都産業大学 宇宙論研究室 (@KSUCosmo) <a href="https://twitter.com/KSUCosmo/status/1888170859812028851?ref_src=twsrc%5Etfw">February 8, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-    <h2>宇宙論を志す人へ</h2>
-    <h3>高校までに身につけてほしいこと</h3>
-    宇宙について深く考えるためには、高校数学（特に微分・積分）と、物理学の基礎（特に力学）をしっかり身につけることが重要です。大学受験のための「丸暗記」や「テクニック」だけでは、大学での学びに太刀打ちできません。高校時代から意識してほしいのは、教科書の記述を論理的に読み解く力です。まず、数学の魅力は、少数の定義や公理から論理的に導かれる体系にあります。単なる暗記ではなく、定義から定理を導く過程を理解することが重要です。同様に、物理も基本法則を出発点とし、論理的に展開される学問ですが、高校で学ぶ物理法則の中には、十分な説明なしに仮定されるものもあります。教科書の内容がどこまで演繹的に導かれ、どこからが仮定なのかを見極める力を養いましょう。特に、力学はシンプルな体系を持ち、物理の考え方を鍛える最良の練習になります。高校時代から「なぜそうなるのか」を意識し、教科書を論理的に読み解く習慣を身につけましょう。また、物理を学ぶ上で、物理量が次元（単位）を持つことを意識するのは非常に重要です。次元を考えるだけで、未知の量の性質や既存の量との関係を見抜く手がかりになります。これは、数学で未知数を x と置く操作とは本質的に異なり、物理学の根幹に関わる概念です。物理法則とは、次元を持つ個々の物理量同士を結びつけるものです。深い考察を通じて数式の持つ意味を見出せるようになることこそ、物理学の醍醐味と言えます。高校数学と物理学の基礎を固めることで、大学での学びに確かな土台を築くことができます。
-
-    <h3>京都産業大学 理学部 宇宙物理・気象学科で学べること</h3>
-    本学科では、宇宙や気象に関する<b>専門的な講義を比較的低学年(2, 3年次)から受講できます</b>。私が担当する宇宙論関連の講義でも、できる限り分野内外の最新の進展を取り入れ、教科書に載るような確定的な事柄だけでなく、論争中の事項や未解決問題についても積極的に紹介するようにしています。これらを通じて、卒業研究や大学院での研究についてより具体的にイメージしてもらうとともに、基礎科目の学習意欲を高めてもらいたいと考えています。入学する学生の多くは「宇宙に興味がある」という漠然とした動機を持っているようですが、一方で、特定の研究テーマに対する興味や知識を持つ意識の高い学生も毎年何人か見かけます。「専門は宇宙です」は、「スポーツ選手です」と言っているようなものです。マラソンなのか、レスリングなのか、はたまたサッカーなのか。<b>宇宙には多岐にわたる研究対象が存在し、それぞれに興味深い、未解明の研究テーマが存在します</b>。本学科の講義では、皆さんがまだ出会っていない、本気で取り組んでみたいと思えるテーマに巡り合ってもらうことを一つの重要な目的としています。テレビで見た、雑誌で読んだ、あるいは、高校の探究の授業で学んだ興味深い研究テーマが、5年先、10年先も進展する保証はありません。そのため、入学時に特定の研究テーマに対して強いこだわりを持つことは、必ずしも良い方向に働くとは限らないのです。入学時にブラックホールしか知らなくても大丈夫です。周りの意識の高い学生と比較して悲観する必要は全くありません。宇宙にはそれ以上に奇妙で美しく、まだまだ知られていないものがたくさんあるのですから。高校までに聞きかじった宇宙の知識よりも、<b>数学や物理学の学習に励み、どんな研究分野を選んでも通用する基礎学力の獲得することの方が遥かに重要です</b>。例年、宇宙分野に興味を持って入学してくる学生がやや多いように感じますが、学科の専門講義を受講することで、我々の生活により身近な気象分野に興味が移る人が相当数おり、卒業研究の配属研究室選定時（3年生冬）には、ちょうど半々程度になっています。いずれの分野でも、数学・物理学・データサイエンスといった基礎的なツールが重要であり、共通言語として活用されています。卒業後は大学院に進学する学生もいれば、民間企業に就職する学生もいますが、本学科では、どの進路でも活躍できる高度な理系人材の育成を目指しています。
-
-
-    <h3>研究を開始した後からでも間に合うこと</h3>
-    <b>英語</b>や<b>プログラミング</b>の習得は、大学院進学後でも十分間に合います。ただし、その前提として、数学や物理学を通じて論理的思考力を養い、大学レベルの教科書や科学論文を問題なく読みこなせることが求められます。例えば、私自身、大学院進学時にはプログラミングの経験がほぼゼロで、英語もTOEICすら受けたことがなく、辞書を片手に時間をかけて何とか英語で書かれた教科書を読める程度でした。研究を進める中で、実際に使われている数値計算コードを解析し、必要な機能を追加していくことで、プログラミングを習得しました。自転車の乗り方を説明書で学ぶ人はいません。実際に乗ってみて、バランスを崩しながら少しずつコツをつかんでいくものです。プログラミングの習得は、この感覚と似ています。適切な入門書は参考になりますが、実際に動くコードを触りながら解きたい問題に挑む方が効果的です。英語についても、研究室に長期の外国人ビジターが滞在したり、外国籍の研究員が在籍していたことが、英語による研究活動を当たり前にできるようにする上で大きかったです。本研究室では、海外の研究機関との共同研究が活発に行われており、数値計算が中心的な研究手法となっています。そのため、大学院進学後には、実践を通じて英語やプログラミングを身につけられる環境が整っています。
-
-
-    <h2>所在地</h2>
-    <p>京都市北区上賀茂本山 京都産業大学 万有館3F B314研究室</p>
-
-    <h3>アクセス</h3>
-    <h4>万有館へのアクセス</h4>
-    <p>バスプールよりエスカレーターを２台乗り継いだ先の正面の建物（<a href="https://www.kyoto-su.ac.jp/facilities/cam_map.html">キャンパスマップ</a>）</p>
-
-    <h4>大学までのアクセス</h4>
-    <ul>
-        <li>京都市営地下鉄烏丸線「北大路駅」より京都市バス「北３系統」に乗車、終点「京都産大前」下車</li>
-        <li>京都市営地下鉄烏丸線「国際会館駅」より京都バス「40系統」に乗車、終点「京都産業大学」下車</li>
-        <li>京阪電車「出町柳駅」より京都バス「32、34、35、36系統」に乗車、「京都産業大学」下車</li>
-        <li>叡山電車「二軒茶屋」より徒歩約15分（授業期間中は無料シャトルバス運行）</li>
-    </ul>
-    <h4>交通情報リンク</h4>
-    <ul>
-        <li><a href="https://www2.city.kyoto.lg.jp/kotsu/busdia/hyperdia/70711001.htm">京都市バス時刻表（北大路バスターミナル発）</a></li>
-        <li><a href="https://www.kyotobus.jp/route/timetable/kana19/demachiyanagiekimae.html">京都バス運行情報（出町柳駅前発）</a></li>
-        <li><a href="https://www.kyoto-su.ac.jp/bus/">京都産業大学シャトルバス運行情報</a></li>
-    </ul>
+    <!-- ヘッダー（固定タイトル） -->
+    <div class="header">
+        京都産業大学 宇宙論研究室（西道研究室）
     </div>
+    <div class="tabs">
+        <!-- タブボタン -->
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="tab1">About</button>
+            <button class="tab-button" data-tab="tab2">Members</button>
+            <button class="tab-button" data-tab="tab3">Partners</button>
+            <button class="tab-button" data-tab="tab4">Highlights</button>
+            <button class="tab-button" data-tab="tab5">SNS</button>
+            <button class="tab-button" data-tab="tab6">Address</button>
+            <button class="tab-button" data-tab="tab7">Message</button>
+        </div>
+        <div class="tab-content">
+            <div class="tab-panel active" id="tab1">
+                <h1>京都産業大学 宇宙論研究室</h1>
+                <h4><a href="https://www.kyoto-su.ac.jp/faculty/sc/">理学部</a> <a href="https://www.kyoto-su.ac.jp/faculty/sc/uchu.html">宇宙物理・気象学科</a> / 同大学院 <a href="https://www.kyoto-su.ac.jp/graduateschool/g_sc/">理学研究科</a> <a href="https://www.kyoto-su.ac.jp/graduateschool/g_sc/g_ph/index.html">物理学専攻</a></h4>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-copyright">
-                <p>&copy; <span id="current-year">2025</span> 京都産業大学理学部 宇宙論研究室. All Rights Reserved.</p>
+                <h2>研究テーマ</h2>
+                <h3>観測的宇宙論</h3>
+                <p><b>観測可能な最大スケール</b>における宇宙のあり方を、理論モデルと観測データを比較することで調査しています。特に、宇宙の大規模構造に関する<b>統計的</b>な研究に注力しています。研究手法としては、大規模数値計算、機械学習などの統計モデルの導入に強みがあります。最近では、すばる望遠鏡Hyper Suprime-Camによる弱重力レンズ効果サーベイをはじめとする大規模観測計画との連携を推進し、単なる概念実証にとどまらない、活きたデータサイエンス手法の開発・応用を目指しています。</p>
+                <h3>キーワード</h3>
+                <div class="keywords">
+                    <span class="keyword">宇宙論モデルの検証</span>
+                    <span class="keyword">ダークエネルギー</span>
+                    <span class="keyword">ダークマター</span>
+                    <span class="keyword">インフレーション</span>
+                    <span class="keyword">ニュートリノ質量の謎</span>
+                    <span class="keyword">宇宙の大規模構造</span>
+                    <span class="keyword">摂動論</span>
+                    <span class="keyword">N体シミュレーション</span>
+                    <span class="keyword">データ科学的手法の応用</span>
+                    <span class="keyword">宇宙ビッグデータ</span>
+                    <span class="keyword">シミュレーションに基づく統計推論</span>
+                    <span class="keyword">機械学習</span>
+                    <span class="keyword">エミュレータ</span>
+                    <span class="keyword">銀河サーベイ</span>
+                </div>
+                <h3>参画中の観測計画</h3>
+                <div class="projects">
+                    <span class="project"><a href="https://sumire.ipmu.jp/">SuMIRe</a></span>
+                    <span class="project"><a href="https://hsc.mtk.nao.ac.jp/ssp/home/home_jp/">HSC</a></span>
+                    <span class="project"><a href="https://pfs.ipmu.jp/ja/index.html">PFS</a></span>
+                    <span class="project"><a href="https://roman.gsfc.nasa.gov/">Roman Space Telescope</a></span>
+                    <span class="project"><a href="https://www.esa.int/Science_Exploration/Space_Science/Euclid">Euclid</a></span>
+                </div>
             </div>
-            <div class="footer-contact">
-                <h3>お問い合わせ:</h3>
-                <address>
-                    〒603-8555 京都市北区上賀茂本山<br>
-                    京都産業大学 理学部 宇宙物理・気象学科 宇宙論研究室<br>
-                    Email: nishimichi __at_mark__ cc.kyoto-su.ac.jp
-                </address>
-                <p><a href="https://www.kyoto-su.ac.jp/" target="_blank">京都産業大学公式サイト</a></p>
+            <div class="tab-panel" id="tab2">
+                <h2>メンバー</h2>
+                <h3>スタッフ</h3>
+                <ul>
+                    <li>西道 啓博 准教授 (経歴や担当講義については<a href="https://www.kyoto-su.ac.jp/faculty/professors/sc/nishimichi_takahiro.html">こちら</a>、詳細な研究業績については<a href="https://researchmap.jp/tnishimichi">こちら</a>)</li>
+                </ul>
+                <h3>研究員</h3>
+                <ul>
+                    <li>小林 洋祐 （日本学術振興会特別研究員PD）</li>
+                    <li>新研究員 （科研費研究員、2025年7月着任予定）</li>
+                </ul>
+                <h3>大学院生</h3>
+                <h4>博士前期課程1年</h4>
+                <ul>
+                    <li>佐久間 竜雅</li>
+                    <li>中西 稜</li>
+                    <li>新田 悠翔</li>
+                </ul>
+                <h3>学部4年生</h3>
+                <ul>
+                    <li>太陽系を彷徨う猫</li>
+                    <li>銀河系を眺める犬</li>
+                    <li>銀河団の中央に佇む像</li>
+                    <li>ダークマターを食べる熊</li>
+                    <li>インフレーションを起こした蛇</li>
+                </ul>
+
+                <h2>卒業生の進路</h2>
+                <li><a href="https://www.phys.s.u-tokyo.ac.jp/lp/graduate/">東京大学大学院理学系研究科物理学専攻</a>（修士課程）</li>
+                <li><a href="https://www.st.hirosaki-u.ac.jp/">弘前大学大学院理工学研究科理工学専攻</a>（博士前期課程）</li>
+                <li>京都産業大学大学院理学研究科物理学専攻（博士前期課程）</li>
+            </div>
+            <div class="tab-panel" id="tab3">
+                <h2>主な共同研究パートナー </h2>
+                <li>東京大学 <a href="https://www.ipmu.jp/ja">カブリ数物連携宇宙研究機構(Kavli IPMU)</a></li>
+                <li>京都大学 <a href="https://www.yukawa.kyoto-u.ac.jp/">基礎物理学研究所</a> 宇宙分野</li>
+                <li>名古屋大学 <a href="https://www.astro-th.phys.nagoya-u.ac.jp/c-lab/index.html">宇宙論研究室(C研)</a></li>
+                <li>千葉大学 <a href="https://www.astro.phys.s.chiba-u.ac.jp/">宇宙物理学研究室</a></li>
+                <li>一橋大学 <a href="https://mototakelab.github.io/index.html">Data Driven Science Group</a></li>
+                <li>日本大学 生産工学部 <a href="https://www.cit.nihon-u.ac.jp/department/liberal/">教養・基礎科学系</a></li>
+                <li>中央研究院天文及天文物理研究所(ASIAA) <a href="https://idv.sinica.edu.tw/teppei/study/members.html">Cosmology Group</a></li>
+                <li>ペンシルバニア州立大学 <a href="https://ctoc.igc.psu.edu/">Center for Theoretical and Observational Cosmology</a></li>
+                <li>パルマ大学 <a href="https://smfi.unipr.it/en/node/3294">Cosmology and Astro Physics Section</a></li>
+                <li>ウィーン大学 <a href="https://cosmology.univie.ac.at/">Data Science in Cosmology & Astrophysics Group</a></li>
+                (2025年4月現在、定期的なミーティングを継続中または同一科研費等参加中の研究機関)
+            </div>
+            <div class="tab-panel" id="tab4">
+                <h2>主な研究成果</h2>
+                <li><a href="http://www.kyoto-u.ac.jp/ja/research/research_results/2019/191008_2.html">宇宙の大規模構造の複雑な統計パターンを高速予言する人工知能（AI）ツールを開発 －宇宙ビッグデータのAI分析に向けて</a></li>
+                <li><a href="https://www.kyoto-u.ac.jp/ja/research-news/2021-03-19-0">日本チームのバーチャル宇宙の解析に米国の2チームが挑戦 －宇宙の根源的な謎に迫る精密宇宙論への確かな一歩</a></li>
+                <li><a href="https://www.kyoto-u.ac.jp/ja/research-news/2022-07-21-3">AIとスーパーコンピュータで広大な銀河地図を解読 －宇宙の成り立ちを決める物理量を精密に測定</a></li>
+            </div>
+            <div class="tab-panel" id="tab5">
+                <h2>情報発信</h2>
+                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DGLKsjgTzg9/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DGLKsjgTzg9/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">この投稿をInstagramで見る</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DGLKsjgTzg9/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">京都産業大学宇宙論研究室(@ksucosmo)がシェアした投稿</a></p></div></blockquote>
+                <script async src="https://www.instagram.com/embed.js"></script>
+
+                <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">2/6, 7は雪の降る中、京産大理学部宇宙物理・気象学科の卒業研究発表会が行われました！台風や線状降水帯のような身近な話題から、宇宙の大規模構造や宇宙マイクロ波背景放射などの宇宙の「果て」に迫る大スケールの話題まで聞けて、お腹いっぱいです！<a href="https://twitter.com/hashtag/%E5%AE%87%E5%AE%99%E3%81%AE%E4%BA%AC%E7%94%A3?src=hash&amp;ref_src=twsrc%5Etfw">#宇宙の京産</a> <a href="https://twitter.com/hashtag/%E5%8D%92%E6%A5%AD%E7%A0%94%E7%A9%B6?src=hash&amp;ref_src=twsrc%5Etfw">#卒業研究</a> <a href="https://twitter.com/hashtag/%E5%AE%87%E5%AE%99%E7%89%A9%E7%90%86%E5%AD%A6?src=hash&amp;ref_src=twsrc%5Etfw">#宇宙物理学</a> <a href="https://twitter.com/hashtag/%E6%B0%97%E8%B1%A1%E5%AD%A6?src=hash&amp;ref_src=twsrc%5Etfw">#気象学</a> <a href="https://t.co/c8tpxTIGc0">pic.twitter.com/c8tpxTIGc0</a></p>&mdash; 京都産業大学 宇宙論研究室 (@KSUCosmo) <a href="https://twitter.com/KSUCosmo/status/1888170859812028851?ref_src=twsrc%5Etfw">February 8, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="tab-panel" id="tab6">
+                <h2>所在地</h2>
+                <p>京都市北区上賀茂本山 京都産業大学 万有館3F B314研究室</p>
+                <h3>アクセス</h3>
+                <h4>万有館へのアクセス</h4>
+                <p>バスプールよりエスカレーターを２台乗り継いだ先の正面の建物（<a href="https://www.kyoto-su.ac.jp/facilities/cam_map.html">キャンパスマップ</a>）</p>
+
+                <h4>大学までのアクセス</h4>
+                <ul>
+                    <li>京都市営地下鉄烏丸線「北大路駅」より京都市バス「北３系統」に乗車、終点「京都産大前」下車</li>
+                    <li>京都市営地下鉄烏丸線「国際会館駅」より京都バス「40系統」に乗車、終点「京都産業大学」下車</li>
+                    <li>京阪電車「出町柳駅」より京都バス「32、34、35、36系統」に乗車、「京都産業大学」下車</li>
+                    <li>叡山電車「二軒茶屋」より徒歩約15分（授業期間中は無料シャトルバス運行）</li>
+                </ul>
+                <h4>交通情報リンク</h4>
+                <ul>
+                    <li><a href="https://www2.city.kyoto.lg.jp/kotsu/busdia/hyperdia/70711001.htm">京都市バス時刻表（北大路バスターミナル発）</a></li>
+                    <li><a href="https://www.kyotobus.jp/route/timetable/kana19/demachiyanagiekimae.html">京都バス運行情報（出町柳駅前発）</a></li>
+                    <li><a href="https://www.kyoto-su.ac.jp/bus/">京都産業大学シャトルバス運行情報</a></li>
+                </ul>
+            </div>
+            <div class="tab-panel" id="tab7">
+                <h1>研究室主催者からのメッセージ：宇宙論を志す人へ</h1>
+                <h2>高校生のみなさんへ：京産大で宇宙論の研究はできるか？</h2>
+                <h3>大学入試の学力 vs 研究に必要な能力</h3>
+                <div class="long-text">
+                    「宇宙に興味がある！宇宙についてもっと知りたい！」と思ったときに、誰しも頭によぎるのは、<b>東大や京大に入れるくらいの学力がなければ厳しいのではないか</b>という疑問です。その答えは半分Yesで半分Noと考えています。
+                </div>
+                <div class="long-text">
+                    その最も大きな理由として、大学入試で問われる学力と、研究者になるために必要な能力の間の乖離が挙げられます。大学入試は、高校までの知識を前提に、限られた時間内で問題を解く競争です。高等学校普通科であれば、基本的なカリキュラムは同じなので、大学入試はある意味でフェアな競争と言えるでしょう。難関大入学の称号を得ることで、一定の社会的ステータスを得られるかもしれません。
+                </div>
+                <h3>研究者の基礎として必要な「論理展開を追いかける能力」</h3>
+                <div class="long-text">
+                    一方で、大学以降で学ぶ学問、そして、研究者として取り組む研究には、前提としてよい知識についての縛りはありません。それでも、高校の数学が難しくて分からなかった、物理なんて本当に苦手だったという人が果たして大学での学びに耐えられるかと言えば、かなり疑問です（もちろん、大学から追いつくことは可能です）。
+                </div>
+                <div class="long-text">
+                    では、研究を志す上でどの程度の学力が求められるのでしょうか。まず、<b>教科書の記述を論理的に読み解けるか</b>、そして、<b>難関大学の入試問題の解答解説を読んで理解できるか</b>が、一つの目安になります。真に納得できた状態というものがどのようなものなのか、単に丸覚えするのとは何が違うのか、説明するのはなかなか難しいですが、上記のような読解の過程を、「地図を見ながら新しい目的地まで出かけること」と例えるのであれば、「理解できた状態」とは「あの周辺には前に行ったことがあるから、もう地図を見なくても行けるよ」という状態に近いものと表現できるかもしれません。以前に通った道や、途中にあった建物についてすべて完全に思い出すことはできなくとも、他のよく知っている場所や目的地の大まかな位置を手掛かりに、以前とは一本隣の筋を通ったりしながら、地図を見ずにたどり着くことができるような状態です。
+                </div>
+                <div class="long-text">
+                    学問は歴史の積み重ねです。ニュートンやアインシュタインが見つけたこと、そして、彼らの時代には分かっていなかったものの、今では常識となっていることを使って、次の一手を考えるのが研究です。<b>アインシュタインが見たことのない景色を、みなさんは見ることができるのです！</b>「教科書を読み解く能力」は、ここにたどり着く際に必要となります。突飛な発想ができなくとも、自力では何も見ずに導出することができなくても、先人がすでに解いた過程を教科書で追うことさえできれば十分なのです（最初の発見者のたどった道よりも単純明快な近道を、後の研究者が見つけて教科書にまとめていることがほとんどなので、先人の苦難の道のりをすべて追いかける必要はありません）。
+                </div>
+                <h3>研究手段の多様性</h3>
+                <div class="long-text">
+                    <b>研究に使っていい道具に制限はありません</b>。決して、教科書にまとめられた物理学の理論的な知識だけがすべてではありません。誰も考えなかった新しい道具を持ち込むこと（他分野で開発された手法の応用、実験装置の工夫、近年であればコンピュータやAIの利用など）で、革新的な研究ができるかもしれません。
+                </div>
+                <div class="long-text">
+                    また、「これまで誰も不思議に思わなかったが、よく考えると実はとても不思議である」と指摘することも立派な研究です。そのためには、例えば、他人があまり見向きをしなかったことに目を向け、観測データを来る日も来る日も何百回も確認するような、他人がやりたがらない泥臭い検証を徹底的に続ける力が新発見につながることもあります。紙と鉛筆だけではできないことをやるのが本当の研究なのです。
+                </div>
+                <div class="long-text">
+                    このように多様な能力を、高校までの学力だけから測ることは難しいでしょう（だからこそ、総合型選抜をはじめとした多様な入試制度があるわけですね）。大学から先の学びにおいては、制限時間内に、何も見ずに、答えがあると分かっている問題に取り組む大学入試とは、全く異なる力が問われるということが分かっていただけたでしょうか。
+                </div>
+                <h3>本研究室の理念：宇宙論を「大学受験エリート」だけのものにしない</h3>
+                <div class="long-text">
+                    人の成長のスピードはさまざまですが、18歳前後における学力だけで将来を諦めてしまってよいのでしょうか。この意味で、本研究室は、世界の名だたる研究者がしのぎを削る宇宙論分野を、いわゆる「大学受験エリート」だけのものにしたくないと願っています。また、大学入試の限られた尺度では選抜されない隠れた逸材を発掘したいと思っています。
+                </div>
+                <div class="long-text">
+                    本学科では、毎年、多くの学生が大学レベルの理系分野の素養をきちんと身につけ、３割強の学生が大学院へと進学していきます。<b>本研究室でやりたい研究テーマを見つけ、東大の大学院に進学した学生もいますが、現在の研究分野の動向をよく知る一研究者の立場から、このように将来の道を示すことこそが、まさに本学科、本研究室が提供できる最大の社会貢献ではないかと考えています。</b>
+                </div>
+                <div class="long-text">
+                    本学からの進学先は、学内外の大学院で概ね半々ですが、もちろん京都産業大学の大学院でも世界に通用する研究ができます。学科の規模を考えたとき、大規模な国立大学理学部と比べると、カバーできる研究テーマの幅には限りがありますが、宇宙・気象の諸分野に11名の専門教員を配置する本学科は、一般的な物理学科の中に少数の宇宙専門教員を置く学科と比べて、より充実した専門教育と研究環境を提供しています。大学院進学時はぜひとも大学名ではなく、本当にやりたい研究テーマで選んでほしいです。
+                </div>
+                <div class="long-text">
+                    都心の喧騒から離れ、国内私大最大の望遠鏡を学内に擁する、本学の落ち着いた環境で、一緒に宇宙について考えたいと思うたくさんのみなさんの挑戦を心よりお待ちしています。
+                </div>
+                <h3>高校までに身につけてほしいこと</h3>
+                <div class="long-text">
+                    宇宙について深く考えるためには、<b>高校数学（特に微分・積分）と、物理学の基礎（特に力学）をしっかり身につけることが重要です</b>。大学受験のための「丸暗記」や「テクニック」だけでは、大学での学びに太刀打ちできません。
+                </div>
+                <div class="long-text">
+                    高校時代から意識してほしいのは、教科書の記述を論理的に読み解く力です。まず、数学の魅力は、少数の定義や公理から論理的に導かれる体系にあります。単なる暗記ではなく、定義から定理を導く過程を理解することが重要です。
+                </div>
+                <div class="long-text">
+                    同様に、物理も基本法則を出発点とし、論理的に展開される学問ですが、高校で学ぶ物理法則の中には、十分な説明なしに仮定されるものもあります。教科書の内容がどこまで演繹的に導かれ、どこからが仮定なのかを見極める力を養いましょう。特に、力学はシンプルな体系を持ち、物理の考え方を鍛える最良の練習になります。
+                </div>
+                <div class="long-text">
+                    高校時代から「なぜそうなるのか」を意識し、教科書を論理的に読み解く習慣を身につけましょう。また、物理を学ぶ上で、物理量が次元（単位）を持つことを意識するのは非常に重要です。次元を考えるだけで、未知の量の性質や既存の量との関係を見抜く手がかりになります。これは、数学で未知数を x と置く操作とは本質的に異なり、物理学の根幹に関わる概念です。
+                </div>
+                <div class="long-text">
+                    物理法則とは、次元を持つ個々の物理量同士を結びつけるものです。深い考察を通じて数式の持つ意味を見出せるようになることこそ、物理学の醍醐味と言えます。高校数学と物理学の基礎を固めることで、大学での学びに確かな土台を築くことができます。
+                </div>
+
+                <h2>京都産業大学 理学部 宇宙物理・気象学科で学べること</h2>
+                <h3>低学年から学べる専門性と多様な研究分野</h3>
+                <div class="long-text">
+                    本学科では、宇宙や気象に関する<b>専門的な講義を比較的低学年(2, 3年次)から受講することで、これらの分野について体系的に学ぶことができます</b>。私が担当する宇宙論関連の講義でも、できる限り分野内外の最新の進展を取り入れ、教科書に載るような確定的な事柄だけでなく、論争中の事項や未解決問題についても積極的に紹介するようにしています。これらを通じて、卒業研究や大学院での研究についてより具体的にイメージしてもらうとともに、基礎科目の学習意欲を高めてもらいたいと考えています。
+                </div>
+                <div class="long-text">
+                    これらの講義を通じて学問領域を俯瞰した上で、４年次講義「特別研究」（卒業研究に相当）では、いずれかの研究室に配属されて、より専門的な学習と研究に取り組むことができます。学年あたり40名の定員に対して、11名の専任教員が所属しているため、多様な研究分野から選択することが可能である上に、<b>国公立大学並みの教員あたり学生数を実現し、手厚い指導を受けることができます</b>。
+                </div>
+                <h3>「宇宙」という広大な研究領域</h3>
+                <div class="long-text">
+                    入学する学生の多くは「宇宙に興味がある」という漠然とした動機を持っているようですが、一方で、特定の研究テーマに対する興味や知識を持つ意識の高い学生も毎年何人か見かけます。「専門は宇宙です」は、「スポーツ選手です」と言っているようなものです。マラソンなのか、レスリングなのか、卓球なのか、はたまたサッカーなのか、「スポーツ選手」だけではその人の職業についてあまりよく分かりませんよね。
+                    <b>宇宙には多岐にわたる研究対象が存在し、それぞれに興味深い、未解明の研究テーマが存在します</b>。本学科の講義では、皆さんがまだ出会っていない、本気で取り組んでみたいと思えるテーマに巡り合ってもらうことを一つの重要な目的としています。
+                </div>
+                <div class="long-text">
+                    テレビで見た、雑誌で読んだ、あるいは、高校の探究の授業で学んだ興味深い研究テーマも、5年先、10年先にはすっかり廃れてしまうということだってあるかもしれません。一般受けする研究テーマと、現場の研究者（少なくとも私）が重要と考えている研究テーマの間には、大きなずれがあります。
+                    そのため、入学時に特定の研究テーマに対して強いこだわりを持つことは、必ずしも良い方向に働くとは限らないのです。
+                </div>
+                <div class="long-text">
+                    入学時にブラックホールしか知らなくても大丈夫です。周りの意識の高い学生と比較して悲観する必要は全くありません。宇宙にはそれ以上に奇妙で美しく、まだまだ知られていないものがたくさんあるのですから。高校までに聞きかじった宇宙の知識よりも、<b>数学や物理学の学習に励み、どんな研究分野を選んでも通用する基礎学力を獲得することの方が遥かに重要です</b>。卒業後に民間企業への理系就職を考えた場合にも同じことが言えます。
+                </div>
+                <h3>宇宙と気象-二つの研究領域</h3>
+                <div class="long-text">
+                    「宇宙物理・気象学科」と称する本学科ですが、例年、宇宙分野に興味を持って入学してくる学生がやや多数派のように感じます。実際には、学科の専門講義を受講することで、我々の生活により身近な気象分野に興味が移る人が相当数おり、卒業研究の配属研究室選定時（3年生冬）には、ちょうど半々程度になっています。
+                </div>
+                <div class="long-text">
+                    いずれの分野でも、数学・物理学・データサイエンスといった基礎的なツールが重要であり、共通言語として活用されています。卒業後は大学院に進学する学生もいれば、民間企業に就職する学生もいますが、本学科では、どの進路でも活躍できる高度な理系人材の育成を目指しています。
+                </div>
+
+                <h2>大学院での研究指導を希望する方へ</h2>
+                <h3>博士前期課程（修士課程）</h3>
+                <div class="long-text">
+                    大学院に進学すると、自分の専門分野についてより深く学び、研究を通じて新しい知見を生み出すことが求められます。しかし、特に修士課程の段階では、研究そのものよりも基礎的な勉強の比重が大きくなります。高度な研究を行うためには、その前提となる知識や技術を身につける必要があり、そのための時間を確保しなければなりません。教科書を読み込み、論文を精読し、理論や手法をしっかり理解することが、修士課程の最も重要な課題のひとつです。
+                </div>
+                <div class="long-text">
+                    また、修士課程における研究は、基本的に指導教員の助言を受けながら進めることになります。通常、研究の主導権はまだ学生自身にはなく、テーマ設定や研究の進め方も教員との相談のもとで決まります。そのため、修士の間に投稿論文として世に出せる成果は、多くの場合、せいぜい1本程度にとどまります。修士課程は「独自の研究を展開する」というより、「研究を行うための基礎を固める期間」と考えるのが現実的でしょう。
+                </div>
+                <h3>博士後期課程（博士課程）</h3>
+                <div class="long-text">
+                    博士課程に進むと、研究活動の進め方は大きく変わります。修士課程では与えられたテーマに取り組むことが中心でしたが、博士課程では、研究分野の最新動向を理解し、自ら研究テーマを策定し、独自のアプローチで研究を推進することが求められます。もちろん、指導教員の助言やサポートを受けることはできますが、研究の主体は学生自身へと移行し、より自主的な取り組みが求められます。
+                </div>
+                <div class="long-text">
+                    さらに、博士課程では研究の意義や将来の展望を考える力も必要になります。単に知識や技術を身につけるだけでなく、「どのような研究をすべきか」を自ら考え、実行することが重要です。この段階に至ると、学会発表や論文執筆の機会も増え、学術コミュニティの中での立ち位置を意識しながら活動するようになります。ある程度まとまった研究成果を世に出せれば、国内外の関連研究分野の研究者から認知されるようになるかもしれません。博士課程は、単なる学びの場ではなく、「研究者としての訓練の場」としての側面が強くなるのです。
+                </div>
+                <h3>英語とプログラミング - 実践の中で身につく技能</h3>
+                <div class="long-text">
+                    <b>英語</b>や<b>プログラミング</b>の習得は、大学院進学後でも十分間に合います。ただし、その前提として、大学学部レベルの数学や物理学を十分に身につけるとともに、日本語で書かれた専門書を問題なく読みこなせる論理的な読解力を養っておくことが求められます。海外に挑戦するサッカー選手を想像してみてください。語学力だけ高くても、肝心のサッカーの技術や戦術理解が伴わなければ、海外で活躍の場を得ることは難しいでしょう。同様に、研究者としての英語力やプログラミングスキルも、学問の基礎力がなければ意味をなしません。
+                </div>
+                <div class="long-text">
+                    例えば、私自身、大学院進学時にはプログラミングの経験がほぼゼロで、英語もTOEICすら受けたことがなく、辞書を片手に時間をかけて何とか英語で書かれた教科書を読める程度でした。加えて、出身学部は物理学科だったので、宇宙論に必要な天文学の基礎知識（例えば、星や銀河に関するもの）もそれほどありませんでした。それでも、学部時代に学んだ物理学や初等的な数学の知識は、これらの知識や技術を身につける土台となりました。
+                </div>
+                <div class="long-text">
+                    大学院では、研究を進める中で、実際に使われている数値計算コードを解析し、必要な機能を追加していくことで、プログラミングを習得しました。自転車の乗り方を説明書で学ぶ人はいません。実際に乗ってみて、バランスを崩しながら少しずつコツをつかんでいくものです。プログラミングの習得は、この感覚と似ています。適切な入門書は参考になりますが、実際に動くコードを触りながら解きたい問題に挑む方が効果的です。
+                </div>
+                <div class="long-text">
+                    英語についても、研究室に長期の外国人ビジターが滞在したり、外国籍の研究員が在籍していたことが、英語による研究活動を当たり前にできるようにする上で非常に役に立ちました。英会話については、まずメンタルバリアを打ち破ることが重要です。本研究室では、海外の研究機関との共同研究が活発に行われており、数値計算が中心的な研究手法となっています。そのため、大学院進学後には、実践を通じて英語やプログラミングを身につけられる環境が整っています。
+                </div>
+                <h2>当研究室で研究したい研究者の方へ</h2>
+                <div class="long-text">
+                    京都産業大学は、日本学術振興会（学振）<a href="https://www.jsps.go.jp/j-pd/">特別研究員</a>の<b><a href="https://www.jsps.go.jp/j-pd/pd-koyou/tourokukikan.html">雇用制度導入機関</a></b>です。特別研究員(PD, RPD)として採用された場合は、従来の学振からの「研究奨励金」相当の額が本学からの給与として支給され、加えて社会保険等への加入が可能です。本研究室でも学振研究員を受け入れた実績があります。例年、春頃が申請の季節ですので、興味をお持ちの方は、本研究室に直接お問い合わせください。
+                </div>
+                <div class="long-text">
+                    その他、科研費等財源による雇用の研究員の募集の際には、このホームページでも周知する予定ですので、適宜ご確認ください。
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-copyright">
+                        <p>&copy; <span id="current-year">2025</span> 京都産業大学理学部 宇宙論研究室. All Rights Reserved.</p>
+                    </div>
+                    <div class="footer-contact">
+                        <h3>お問い合わせ:</h3>
+                        <address>
+                            〒603-8555 京都市北区上賀茂本山<br>
+                            京都産業大学 理学部 宇宙物理・気象学科 宇宙論研究室<br>
+                            Email: nishimichi __at_mark__ cc.kyoto-su.ac.jp
+                        </address>
+                        <p><a href="https://www.kyoto-su.ac.jp/" target="_blank">京都産業大学公式サイト</a></p>
+                    </div>
+                </div>
             </div>
         </div>
-        
+
         <script>
+            // タブ切り替えのスクリプト
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    // すべてのタブボタンの active クラスを解除
+                    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active'); // クリックしたボタンをアクティブに
+
+                    // すべてのタブコンテンツを非表示
+                    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+                    // 選択したタブのコンテンツを表示
+                    document.getElementById(this.dataset.tab).classList.add('active');
+                });
+            });
+
             // 自動的に現在の西暦を表示するためのスクリプト
             document.getElementById('current-year').textContent = new Date().getFullYear();
         </script>
