@@ -66,8 +66,27 @@
         /* アクティブなタブの内容を表示 */
         .tab-panel.active {
             display: block;
+            align-items: center; /* 縦の中央揃え */
+            gap: 20px; /* テキストと画像の間隔 */
+        }
+        .content-container {
+            display: flex; /* テキストと画像を横並びに */
+            align-items: center; /* 縦方向の中央揃え */
+            gap: 20px; /* テキストと画像の間隔 */
+        }
+        .text-content {
+            flex: 1; /* テキスト側を柔軟に広げる */
         }
 
+        .image-content {
+            flex: 1; /* 画像側も柔軟に広げる */
+            text-align: center;
+        }
+
+        .panel-image {
+            max-width: 100%;
+            height: auto;
+        }
         h1 {
             color: #1a237e;
             margin-bottom: 10px;
@@ -210,6 +229,15 @@
             font-style: normal;
             margin-bottom: 15px;
         }
+        figure {
+            text-align: center; /* 画像とテキストを中央揃え */
+        }
+
+        figcaption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -234,9 +262,19 @@
                 <h1>京都産業大学 宇宙論研究室</h1>
                 <h4><a href="https://www.kyoto-su.ac.jp/faculty/sc/">理学部</a> <a href="https://www.kyoto-su.ac.jp/faculty/sc/uchu.html">宇宙物理・気象学科</a> / 同大学院 <a href="https://www.kyoto-su.ac.jp/graduateschool/g_sc/">理学研究科</a> <a href="https://www.kyoto-su.ac.jp/graduateschool/g_sc/g_ph/index.html">物理学専攻</a></h4>
 
-                <h2>研究テーマ：宇宙論</h2>
-                <div class="long-text">
-                    私たちの研究室では、宇宙の成り立ちと進化を探る「宇宙論」の研究を行っています。その中でも、特に、宇宙を記述する理論的な枠組みである<b>宇宙論モデル</b>を観測データを用いて検証する「観測的宇宙論」に取り組んでいます。特に力を入れているのが、「宇宙の大規模構造」に関する研究です。<b>観測可能な最大スケール</b>における宇宙のあり方を、さまざまな手法を駆使して調査することで、ダークマターやダークエネルギーなど、宇宙論の大きな未解決問題に迫ろうとしています。宇宙論は我々人類が調査することができる最大スケールにおける実証科学なのです。
+                <h2>宇宙論とは</h2>
+                <div class="content-container">
+                    <div class="text-content">
+                        <div class="long-text">
+                            「宇宙論」は宇宙の成り立ちと進化を探る研究分野です。私たちはどこからやって来て、どこへ向かうのでしょう？ 宇宙は何でできているのか？ その形はどうなっているのか？ 果ては存在するのか？ 宇宙はどのように膨張しているのか？ この先に待つ運命は何か？ そして、これらを支配する究極の法則は何か？ こうした問いに答えるため、宇宙論では観測と理論の両面から宇宙の法則を探究します。本研究室では、宇宙を記述する理論的な枠組みである<b>宇宙論モデル</b>を観測データを用いて検証する「観測的宇宙論」に取り組んでいます。特に力を入れているのが、「宇宙の大規模構造」に関する研究です。<b>観測可能な最大スケール</b>における宇宙のあり方を、さまざまな手法を駆使して調査することで、ダークマターやダークエネルギーなど、宇宙論の大きな未解決問題に迫ろうとしています。宇宙論は我々人類が調査することができる最大スケールにおける実証科学なのです。
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <figure>
+                            <img src="lss.jpg" class="panel-image">
+                            <figcaption>数値シミュレーションによって再現された宇宙の大規模構造</figcaption>
+                        </figure>
+                    </div>
                 </div>
                 <h3>観測的宇宙論</h3>
                 <div class="long-text">
@@ -268,6 +306,17 @@
                     <span class="keyword">エミュレータ</span>
                     <span class="keyword">銀河サーベイ</span>
                 </div>
+                <h2>本学科、本研究室についてもっと知るには</h2>
+                <p>
+                    京都産業大学では、年6回のオープンキャンパスを開催しています。宇宙物理・気象学科では、教員による学科紹介のほか、在学中の本学科学生から直接話を聞ける個別相談の機会を設けています。本学科ならではの魅力的な模擬授業や体験実習も、毎回異なる内容で実施しています。詳細は、<a href="https://www.kyoto-su.ac.jp/admissions/event/oc/index.html">こちら</a>をご覧ください。
+                </p>
+                <ul>
+                    <li>次回のオープンキャンパス：<font color="red">2025年3月29日（土）</font> 事前申し込み、当日のプログラムは<a href="https://www.kyoto-su.ac.jp/admissions/event/oc/2025_march.html">こちら</a>
+                    <span>模擬授業：「お家でできる電波科学」</span></li>
+                    <!-- <li>次回のオープンキャンパス：<font color="red">2025年6月8日（日）</font>
+                        <span>模擬授業：「赤外線で見る世界」</span></li> -->
+                    <li>本研究室担当回：<font color="red">2025年9月15日（月・祝）</font></li>
+                </ul>
             </div>
             <div class="tab-panel" id="tab2">
                 <h2>メンバー</h2>
@@ -289,6 +338,7 @@
                     <li>新田 悠翔</li>
                 </ul>
                 <h3>学部4年生</h3>
+                <p>（プライバシー保護、サイバーセキュリティの観点から、匿名としています）</p>
                 <ul>
                     <li>太陽系を彷徨う猫</li>
                     <li>天の川を眺める犬</li>
@@ -298,42 +348,59 @@
                 </ul>
 
                 <h2>卒業生の進路</h2>
-                <li><a href="https://www.phys.s.u-tokyo.ac.jp/lp/graduate/">東京大学大学院理学系研究科物理学専攻</a>（修士課程）</li>
-                <li><a href="https://www.st.hirosaki-u.ac.jp/">弘前大学大学院理工学研究科理工学専攻</a>（博士前期課程）</li>
-                <li>京都産業大学大学院理学研究科物理学専攻（博士前期課程）</li>
+                <h3>学部卒業生</h3>
+                <ul>
+                    <li><a href="https://www.phys.s.u-tokyo.ac.jp/lp/graduate/">東京大学大学院理学系研究科物理学専攻</a>（修士課程）</li>
+                    <li><a href="https://www.st.hirosaki-u.ac.jp/">弘前大学大学院理工学研究科理工学専攻</a>（博士前期課程）</li>
+                    <li>京都産業大学大学院理学研究科物理学専攻（博士前期課程）</li>
+                </ul>
+                <h3>大学院博士前期課程修了</h3>
+                <ul>
+                    <li>Yet to come...</li>
+                </ul>
+                <h3>大学院博士後期課程修了生</h3>
+                <ul>
+                    <li>Yet to come...</li>
+                </ul>
             </div>
             <div class="tab-panel" id="tab3">
                 <h2>主な共同研究パートナー </h2>
-                <li>東京大学 <a href="https://www.ipmu.jp/ja">カブリ数物連携宇宙研究機構(Kavli IPMU)</a></li>
-                <li>京都大学 <a href="https://www.yukawa.kyoto-u.ac.jp/">基礎物理学研究所</a> 宇宙分野</li>
-                <li>名古屋大学 <a href="https://www.astro-th.phys.nagoya-u.ac.jp/c-lab/index.html">宇宙論研究室(C研)</a></li>
-                <li>千葉大学 <a href="https://www.astro.phys.s.chiba-u.ac.jp/">宇宙物理学研究室</a></li>
-                <li>一橋大学 <a href="https://mototakelab.github.io/index.html">Data Driven Science Group</a></li>
-                <li>日本大学 生産工学部 <a href="https://www.cit.nihon-u.ac.jp/department/liberal/">教養・基礎科学系</a></li>
-                <li>中央研究院天文及天文物理研究所(ASIAA) <a href="https://idv.sinica.edu.tw/teppei/study/members.html">Cosmology Group</a></li>
-                <li>ペンシルバニア州立大学 <a href="https://ctoc.igc.psu.edu/">Center for Theoretical and Observational Cosmology</a></li>
-                <li>パルマ大学 <a href="https://smfi.unipr.it/en/node/3294">Cosmology and Astro Physics Section</a></li>
-                <li>ウィーン大学 <a href="https://cosmology.univie.ac.at/">Data Science in Cosmology & Astrophysics Group</a></li>
+                <ul>
+                    <li>東京大学 <a href="https://www.ipmu.jp/ja">カブリ数物連携宇宙研究機構(Kavli IPMU)</a></li>
+                    <li>京都大学 <a href="https://www.yukawa.kyoto-u.ac.jp/">基礎物理学研究所</a> 宇宙分野</li>
+                    <li>名古屋大学 <a href="https://www.astro-th.phys.nagoya-u.ac.jp/c-lab/index.html">宇宙論研究室(C研)</a></li>
+                    <li>千葉大学 <a href="https://www.astro.phys.s.chiba-u.ac.jp/">宇宙物理学研究室</a></li>
+                    <li>一橋大学 <a href="https://mototakelab.github.io/index.html">Data Driven Science Group</a></li>
+                    <li>日本大学 生産工学部 <a href="https://www.cit.nihon-u.ac.jp/department/liberal/">教養・基礎科学系</a></li>
+                    <li>中央研究院天文及天文物理研究所(ASIAA) <a href="https://idv.sinica.edu.tw/teppei/study/members.html">Cosmology Group</a></li>
+                    <li>ペンシルバニア州立大学 <a href="https://ctoc.igc.psu.edu/">Center for Theoretical and Observational Cosmology</a></li>
+                    <li>パルマ大学 <a href="https://smfi.unipr.it/en/node/3294">Cosmology and Astro Physics Section</a></li>
+                    <li>ウィーン大学 <a href="https://cosmology.univie.ac.at/">Data Science in Cosmology & Astrophysics Group</a></li>
+                </ul>
                 (2025年4月現在、定期的なミーティングを継続中または同一科研費等参加中の研究機関)
             </div>
             <div class="tab-panel" id="tab4">
                 <h2>研究成果のプレスリリース</h2>
-                <li><a href="http://www.kyoto-u.ac.jp/ja/research/research_results/2019/191008_2.html">宇宙の大規模構造の複雑な統計パターンを高速予言する人工知能（AI）ツールを開発 －宇宙ビッグデータのAI分析に向けて</a></li>
-                <li><a href="https://www.kyoto-u.ac.jp/ja/research-news/2021-03-19-0">日本チームのバーチャル宇宙の解析に米国の2チームが挑戦 －宇宙の根源的な謎に迫る精密宇宙論への確かな一歩</a></li>
-                <li><a href="https://www.kyoto-u.ac.jp/ja/research-news/2022-07-21-3">AIとスーパーコンピュータで広大な銀河地図を解読 －宇宙の成り立ちを決める物理量を精密に測定</a></li>
+                <ul>
+                    <li><a href="http://www.kyoto-u.ac.jp/ja/research/research_results/2019/191008_2.html">宇宙の大規模構造の複雑な統計パターンを高速予言する人工知能（AI）ツールを開発 －宇宙ビッグデータのAI分析に向けて</a></li>
+                    <li><a href="https://www.kyoto-u.ac.jp/ja/research-news/2021-03-19-0">日本チームのバーチャル宇宙の解析に米国の2チームが挑戦 －宇宙の根源的な謎に迫る精密宇宙論への確かな一歩</a></li>
+                    <li><a href="https://www.kyoto-u.ac.jp/ja/research-news/2022-07-21-3">AIとスーパーコンピュータで広大な銀河地図を解読 －宇宙の成り立ちを決める物理量を精密に測定</a></li>
+                </ul>
                 <h2>進行中の科研費等研究計画</h2>
-                <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-22K03634">「数値モデルと解析的モデルを融合した銀河統計精密宇宙論」</a><br>
-                    <span>日本学術振興会 科学研究費助成事業 基盤研究(C) 2022年4月 - 2027年3月
-                    （研究代表者）</span></li>
-                <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24H00215">「すばるHSC・PFSビッグデータの統合宇宙論解析によるS8不一致問題の決着」</a><br>
-                    <span>日本学術振興会 科学研究費助成事業 基盤研究(A) 2024年4月 - 2029年3月
-                    （研究分担者）</span></li>
-                <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24H00221">「高速エミュレータを用いた広域宇宙観測データ分析」</a><br>
-                    <span>日本学術振興会 科学研究費助成事業 基盤研究(A) 2024年4月 - 2029年3月
-                    （研究分担者）</span></li>
-                <li><a href="https://fugaku100kei.jp/index.php/promoting-research/four-areas#anchor4">「次世代宇宙論サーベイ群のための多波長宇宙論的シミュレーション」</a><br>
-                    <span>「富岳」成果創出加速プログラム 領域：基礎科学の発展、新領域 2023年4月 - 2026年3月
-                    （研究協力者）</span></li>
+                <ul>
+                    <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-22K03634">「数値モデルと解析的モデルを融合した銀河統計精密宇宙論」</a><br>
+                        <span>日本学術振興会 科学研究費助成事業 基盤研究(C) 2022年4月 - 2027年3月
+                        （研究代表者）</span></li>
+                    <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24H00215">「すばるHSC・PFSビッグデータの統合宇宙論解析によるS8不一致問題の決着」</a><br>
+                        <span>日本学術振興会 科学研究費助成事業 基盤研究(A) 2024年4月 - 2029年3月
+                        （研究分担者）</span></li>
+                    <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24H00221">「高速エミュレータを用いた広域宇宙観測データ分析」</a><br>
+                        <span>日本学術振興会 科学研究費助成事業 基盤研究(A) 2024年4月 - 2029年3月
+                        （研究分担者）</span></li>
+                    <li><a href="https://fugaku100kei.jp/index.php/promoting-research/four-areas#anchor4">「次世代宇宙論サーベイ群のための多波長宇宙論的シミュレーション」</a><br>
+                        <span>「富岳」成果創出加速プログラム 領域：基礎科学の発展、新領域 2023年4月 - 2026年3月
+                        （研究協力者）</span></li>
+                </ul>
                 <h2>参画中の観測計画</h2>
                 <div class="projects">
                     <span class="project"><a href="https://sumire.ipmu.jp/"><b>SuMIRe</b></a></span>
@@ -386,7 +453,7 @@
                     一方で、大学以降で学ぶ学問、そして、研究者として取り組む研究には、前提としてよい知識についての縛りはありません。それでも、高校の数学が難しくて分からなかった、物理なんて本当に苦手だったという人が果たして大学での学びに耐えられるかと言えば、かなり疑問です（もちろん、大学から追いつくことは可能です）。
                 </div>
                 <div class="long-text">
-                    では、研究を志す上でどの程度の学力が求められるのでしょうか。まず、<b>教科書の記述を論理的に読み解けるか</b>、そして、<b>難関大学の入試問題の解答解説を読んで理解できるか</b>が、一つの目安になります。真に納得できた状態というものがどのようなものなのか、単に丸覚えするのとは何が違うのか、説明するのはなかなか難しいですが、上記のような読解の過程を、「地図を見ながら新しい目的地まで出かけること」と例えるのであれば、「理解できた状態」とは「あの周辺には前に行ったことがあるから、もう地図を見なくても行けるよ」という状態に近いものと表現できるかもしれません。以前に通った道や、途中にあった建物についてすべて完全に思い出すことはできなくとも、他のよく知っている場所や目的地の大まかな位置を手掛かりに、以前とは一本隣の筋を通ったりしながら、地図を見ずにたどり着くことができるような状態です。
+                    では、研究を志す上でどの程度の学力が求められるのでしょうか。まず、<b>教科書の記述を論理的に読み解けるか</b>、そして、<b>難関大学の入試問題の解答解説を読んで理解できるか</b>が、一つの目安になります。真に納得できた状態というものがどのようなもので、単に丸覚えするのとは何が違うのかを説明するのはなかなか難しいですが、以下のように例えてみましょう。教科書や解説の読解の過程を、「地図を見ながら新しい目的地まで出かけること」と例えるのであれば、「理解できた状態」とは「あの周辺には前に行ったことがあるから、もう地図を見なくても行けるよ」という状態であると表現できるかもしれません。以前に通った道や、途中にあった建物についてすべて完全に思い出すことはできなくとも、途中にあるよく知っている場所や目的地の大まかな位置、陽の出ている方向などを手掛かりに、以前とは一本隣の筋を通ったりしながら、地図を見ずにたどり着くことができるような状態です。
                 </div>
                 <div class="long-text">
                     学問は歴史の積み重ねです。ニュートンやアインシュタインが見つけたこと、そして、彼らの時代には分かっていなかったものの、今では常識となっていることを使って、次の一手を考えるのが研究です。<b>アインシュタインが見たことのない景色を、みなさんは見ることができるのです！</b>「教科書を読み解く能力」は、ここにたどり着く際に必要となります。突飛な発想ができなくとも、自力では何も見ずに導出することができなくても、先人がすでに解いた過程を教科書で追うことさえできれば十分なのです（最初の発見者のたどった道よりも単純明快な近道を、後の研究者が見つけて教科書にまとめていることがほとんどなので、先人の苦難の道のりをすべて追いかける必要はありません）。
@@ -492,15 +559,15 @@
             </div>
             <div class="tab-panel" id="tab8">
                 <h2>当研究室で研究したい研究者の方へ</h2>
-                <div class="long-text">
+                <p>
                     京都産業大学は、日本学術振興会（学振）<a href="https://www.jsps.go.jp/j-pd/">特別研究員</a>の<b><a href="https://www.jsps.go.jp/j-pd/pd-koyou/tourokukikan.html">雇用制度導入機関</a></b>です。特別研究員(PD, RPD)として採用された場合は、従来の学振からの「研究奨励金」相当の額が本学からの給与として支給され、加えて社会保険等への加入が可能です。本研究室でも学振研究員を受け入れた実績があります。例年、春頃が申請の季節ですので、興味をお持ちの方は、本研究室に直接お問い合わせください。
-                </div>
-                <div class="long-text">
+                </p>
+                <p>
                     その他、科研費等財源による雇用の研究員の募集の際には、このホームページでも周知する予定ですので、適宜ご確認ください。
-                </div>
-                <div class="long-text">
-                    <font color="red">令和8年度採用開始の学振特別研究員の応募については、4月30日(水)が申請に必要なID・パスワード発行申込の期限、5月16日(金)が電子申請システムを通じた申請書類の提出期限です。本研究室での受け入れを希望する場合は、十分に余裕を持ってコンタクトしてください。</font>
-                </div>
+                </p>
+                <p>
+                    <font color="red">令和8年度採用開始の学振特別研究員の応募については、4月30日(水)が申請に必要なID・パスワード発行申込の期限、5月16日(金)が電子申請システムを通じた申請書類の提出期限です。本研究室での受け入れを希望する場合は、十分に余裕を持ってお早めにコンタクトしてください。</font>
+                </p>
             </div>
 
             <footer class="footer">
