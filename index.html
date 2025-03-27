@@ -17,7 +17,7 @@
         .tabs {
             display: flex;
             width: 100%;
-            max-width: 1000px; /* 必要に応じて調整 */
+            max-width: 1080px; /* 必要に応じて調整 */
             height: 100vh;  /* 画面高の80%を確保 */
             margin: auto;
             border: 1px solid #ccc;
@@ -151,6 +151,17 @@
             color: #666;
         }
 
+        ul {
+            list-style-type: "・"; /* 中黒をリストマーカーとして設定 */
+            padding-left: 1.5em; /* リスト全体のインデント */
+        }
+        li {
+            margin-bottom: 0.5em; /* 項目間の間隔 */
+        }
+        li span {
+            display: block; /* 説明文を次の行にする */
+            text-indent: 1.5em; /* インデントを適用 */
+        }
         /* フッター用のCSS */
         .footer {
             /* text-align: center; */
@@ -210,12 +221,13 @@
         <!-- タブボタン -->
         <div class="tab-buttons">
             <button class="tab-button active" data-tab="tab1">About</button>
-            <button class="tab-button" data-tab="tab2">Members</button>
+            <button class="tab-button" data-tab="tab2">Team</button>
             <button class="tab-button" data-tab="tab3">Partners</button>
-            <button class="tab-button" data-tab="tab4">Highlights</button>
+            <button class="tab-button" data-tab="tab4">Research</button>
             <button class="tab-button" data-tab="tab5">SNS</button>
             <button class="tab-button" data-tab="tab6">Access</button>
             <button class="tab-button" data-tab="tab7">Message</button>
+            <button class="tab-button" data-tab="tab8">Opportunity</button>
         </div>
         <div class="tab-content">
             <div class="tab-panel active" id="tab1">
@@ -224,20 +236,20 @@
 
                 <h2>研究テーマ：宇宙論</h2>
                 <div class="long-text">
-                    私たちの研究室では、宇宙の成り立ちと進化を探る「宇宙論」を専門としています。その中でも特に、観測データを用いて、宇宙を記述する理論的な枠組みである<b>宇宙論モデル</b>を検証する「観測的宇宙論」に取り組んでいます。特に力を入れているのが、「宇宙の大規模構造」に関する研究です。<b>観測可能な最大スケール</b>における宇宙のあり方を、さまざまな手法を駆使して調べることで、ダークマターやダークエネルギーなど、宇宙論の大きな未解決問題に迫ろうとしています。宇宙論は人類が調査することができる最大スケールにおける実証科学なのです。
+                    私たちの研究室では、宇宙の成り立ちと進化を探る「宇宙論」の研究を行っています。その中でも、特に、宇宙を記述する理論的な枠組みである<b>宇宙論モデル</b>を観測データを用いて検証する「観測的宇宙論」に取り組んでいます。特に力を入れているのが、「宇宙の大規模構造」に関する研究です。<b>観測可能な最大スケール</b>における宇宙のあり方を、さまざまな手法を駆使して調査することで、ダークマターやダークエネルギーなど、宇宙論の大きな未解決問題に迫ろうとしています。宇宙論は我々人類が調査することができる最大スケールにおける実証科学なのです。
                 </div>
                 <h3>観測的宇宙論</h3>
                 <div class="long-text">
                     「観測的宇宙論」という名称から、天文台での観測を主とする研究を想像されるかもしれません。しかし、私たちのアプローチは理論的なものに近いです。
                 </div>
                 <div class="long-text">
-                    具体的には、基礎理論をもとに「どのような観測量を見れば、どのような宇宙の性質がテストできるのか」を理論的に予測します。この予測には、解析的計算のほかに、「富岳」などのスーパーコンピュータによる数値シミュレーションを用います。銀河が描く宇宙の大規模構造がどのような統計的性質を持つか計算し、それが宇宙論パラメータや重力理論、宇宙初期に起きたインフレーションの機構の違いをどのように反映するかを調べるといった研究を行っています。
+                    具体的には、基礎理論をもとに「どのような観測量を見れば、どのような宇宙の性質がテストできるのか」を理論的に予測します。この予測には、解析的計算のほかに、<b>「富岳」などのスーパーコンピュータによる数値シミュレーション</b>を用います。これにより、銀河が描く宇宙の大規模構造がどのような統計的性質を持つか計算し、それが宇宙論モデル、そこに含まれる宇宙論パラメータと呼ばれる少数の数値、重力理論、宇宙初期に起きたインフレーションの機構の違いをどのように反映するか明らかにします。
                 </div>
                 <div class="long-text">
-                    理論予測ができるようになると、次に重要なのが「観測データと理論を照らし合わせる」作業です。これは、統計学の知見に基づく情報抽出の問題と言えます。本研究室では、機械学習の技術を応用することで、この問題にアプローチしています。最近では、すばる望遠鏡Hyper Suprime-Camによる弱重力レンズ効果の観測データを活用し、宇宙のダークマターの量や分布に対して制約を行いました。そのほかにもEuclid衛星やRoman宇宙望遠鏡などの国際的な共同研究プロジェクトに参加するなど、宇宙ビッグデータの最前線で研究を推進しています。
+                    理論予測ができるようになると、次に重要なのが「観測データと理論を照らし合わせる」作業です。これは、<b>統計学の知見に基づく情報抽出の問題</b>と言えます。本研究室では、機械学習の技術を応用することで、この問題にアプローチしています。最近では、すばる望遠鏡Hyper Suprime-Camによる弱重力レンズ効果の観測データを活用し、宇宙に占めるダークマターの割合や空間分布に対して制約を行いました。そのほかにもEuclid衛星やRoman宇宙望遠鏡などの国際的な共同研究プロジェクトに参加するなど、<b>宇宙ビッグデータ</b>の最前線で研究を推進しています。
                 </div>
                 <div class="long-text">
-                    このように、私たちは、観測と理論をつなぐ「架け橋」としての役割を果たすことで、宇宙の根本的な謎に迫ることを目指しています。また、この過程で、単なる概念実証にとどまらない、活きたデータサイエンス手法の開発・応用を行い、新技術の分野を跨いだ広い応用の可能性を模索しています。
+                    このように、私たちは、観測と理論をつなぐ「架け橋」としての役割を果たすことで、宇宙の根本的な謎に迫ろうとしています。また、この過程で、単なる概念実証にとどまらない、活きたデータサイエンス手法の開発・応用を行うとともに、新技術の分野をまたいだ広い応用の可能性を模索しています。
                 </div>
                 <h3>キーワード</h3>
                 <div class="keywords">
@@ -256,24 +268,17 @@
                     <span class="keyword">エミュレータ</span>
                     <span class="keyword">銀河サーベイ</span>
                 </div>
-                <h3>参画中の観測計画</h3>
-                <div class="projects">
-                    <span class="project"><a href="https://sumire.ipmu.jp/">SuMIRe</a></span>
-                    <span class="project"><a href="https://hsc.mtk.nao.ac.jp/ssp/home/home_jp/">HSC</a></span>
-                    <span class="project"><a href="https://pfs.ipmu.jp/ja/index.html">PFS</a></span>
-                    <span class="project"><a href="https://roman.gsfc.nasa.gov/">Roman Space Telescope</a></span>
-                    <span class="project"><a href="https://www.esa.int/Science_Exploration/Space_Science/Euclid">Euclid</a></span>
-                </div>
             </div>
             <div class="tab-panel" id="tab2">
                 <h2>メンバー</h2>
+                <p>（2025年4月現在）</p>
                 <h3>スタッフ</h3>
                 <ul>
                     <li>西道 啓博 准教授 (経歴や担当講義については<a href="https://www.kyoto-su.ac.jp/faculty/professors/sc/nishimichi_takahiro.html">こちら</a>、詳細な研究業績については<a href="https://researchmap.jp/tnishimichi">こちら</a>)</li>
                 </ul>
                 <h3>研究員</h3>
                 <ul>
-                    <li>小林 洋祐 （日本学術振興会特別研究員PD）</li>
+                    <li>小林 洋祐 （日本学術振興会特別研究員PD、<a href="https://researchmap.jp/yosukekobayashi">経歴など</a>）</li>
                     <li>新研究員 （科研費研究員、2025年7月着任予定）</li>
                 </ul>
                 <h3>大学院生</h3>
@@ -286,10 +291,10 @@
                 <h3>学部4年生</h3>
                 <ul>
                     <li>太陽系を彷徨う猫</li>
-                    <li>銀河系を眺める犬</li>
-                    <li>銀河団の中央に佇む像</li>
+                    <li>天の川を眺める犬</li>
+                    <li>銀河団の中心で吠える像</li>
                     <li>ダークマターを食べる熊</li>
-                    <li>インフレーションを起こした蛇</li>
+                    <li>インフレーションで引き伸ばされた蛇</li>
                 </ul>
 
                 <h2>卒業生の進路</h2>
@@ -316,8 +321,29 @@
                 <li><a href="http://www.kyoto-u.ac.jp/ja/research/research_results/2019/191008_2.html">宇宙の大規模構造の複雑な統計パターンを高速予言する人工知能（AI）ツールを開発 －宇宙ビッグデータのAI分析に向けて</a></li>
                 <li><a href="https://www.kyoto-u.ac.jp/ja/research-news/2021-03-19-0">日本チームのバーチャル宇宙の解析に米国の2チームが挑戦 －宇宙の根源的な謎に迫る精密宇宙論への確かな一歩</a></li>
                 <li><a href="https://www.kyoto-u.ac.jp/ja/research-news/2022-07-21-3">AIとスーパーコンピュータで広大な銀河地図を解読 －宇宙の成り立ちを決める物理量を精密に測定</a></li>
+                <h2>進行中の科研費等研究計画</h2>
+                <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-22K03634">「数値モデルと解析的モデルを融合した銀河統計精密宇宙論」</a><br>
+                    <span>日本学術振興会 科学研究費助成事業 基盤研究(C) 2022年4月 - 2027年3月
+                    （研究代表者）</span></li>
+                <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24H00215">「すばるHSC・PFSビッグデータの統合宇宙論解析によるS8不一致問題の決着」</a><br>
+                    <span>日本学術振興会 科学研究費助成事業 基盤研究(A) 2024年4月 - 2029年3月
+                    （研究分担者）</span></li>
+                <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24H00221">「高速エミュレータを用いた広域宇宙観測データ分析」</a><br>
+                    <span>日本学術振興会 科学研究費助成事業 基盤研究(A) 2024年4月 - 2029年3月
+                    （研究分担者）</span></li>
+                <li><a href="https://fugaku100kei.jp/index.php/promoting-research/four-areas#anchor4">「次世代宇宙論サーベイ群のための多波長宇宙論的シミュレーション」</a><br>
+                    <span>「富岳」成果創出加速プログラム 領域：基礎科学の発展、新領域 2023年4月 - 2026年3月
+                    （研究協力者）</span></li>
+                <h2>参画中の観測計画</h2>
+                <div class="projects">
+                    <span class="project"><a href="https://sumire.ipmu.jp/"><b>SuMIRe</b></a></span>
+                    <span class="project"><a href="https://hsc.mtk.nao.ac.jp/ssp/home/home_jp/"><b>HSC</b></a></span>
+                    <span class="project"><a href="https://pfs.ipmu.jp/ja/index.html"><b>PFS</b></a></span>
+                    <span class="project"><a href="https://roman.gsfc.nasa.gov/"><b>Roman Space Telescope</b></a></span>
+                    <span class="project"><a href="https://www.esa.int/Science_Exploration/Space_Science/Euclid"><b>Euclid</b></a></span>
+                </div>
             </div>
-            <div class="tab-panel" id="tab5">
+        <div class="tab-panel" id="tab5">
                 <h2>情報発信</h2>
                 <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DHiAzlWz3V1/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DHiAzlWz3V1/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">この投稿をInstagramで見る</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DHiAzlWz3V1/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">京都産業大学宇宙論研究室(@ksucosmo)がシェアした投稿</a></p></div></blockquote>
                 <script async src="https://www.instagram.com/embed.js"></script>
@@ -393,16 +419,19 @@
                     宇宙について深く考えるためには、<b>高校数学（特に微分・積分）と、物理学の基礎（特に力学）をしっかり身につけることが重要です</b>。大学受験のための「丸暗記」や「テクニック」だけでは、大学での学びに太刀打ちできません。
                 </div>
                 <div class="long-text">
-                    高校時代から意識してほしいのは、教科書の記述を論理的に読み解く力です。まず、数学の魅力は、少数の定義や公理から論理的に導かれる体系にあります。単なる暗記ではなく、定義から定理を導く過程を理解することが重要です。
+                    高校時代から意識してほしいのは、教科書の記述を論理的に読み解く力です。まず、数学の魅力は、少数の定義や公理から論理的に導かれる体系にあります。単なる暗記ではなく、定義から定理を導く過程を理解することが重要です。円滑な計算の実行のために、頻出の式変形法や公式を覚えることも必要ですが、これらも元をたどれば定義や公理に基づいて導くことができます。「加法定理を証明せよ」という問題がかつて東大入試で問われたことは有名です。
                 </div>
                 <div class="long-text">
-                    同様に、物理も基本法則を出発点とし、論理的に展開される学問ですが、高校で学ぶ物理法則の中には、十分な説明なしに仮定されるものもあります。教科書の内容がどこまで演繹的に導かれ、どこからが仮定なのかを見極める力を養いましょう。特に、力学はシンプルな体系を持ち、物理の考え方を鍛える最良の練習になります。
+                    物理学も本来、数学と同様に少数の基本原理から演繹的に展開される美しい理論体系を持っています。しかし、高校の段階では、学習済みの数学的なツールが限られているため、関連する様々な法則が、個々に覚えざるを得ない独立したものであるかのように紹介されることが多くなります。このため、物理は「個別の法則を覚える科目」という印象を持たれがちです。本来であれば、より少数の原理のみから整理することも可能ですが、それを実感するには大学以降の学びを待つ必要があります。
                 </div>
                 <div class="long-text">
-                    高校時代から「なぜそうなるのか」を意識し、教科書を論理的に読み解く習慣を身につけましょう。また、物理を学ぶ上で、物理量が次元（単位）を持つことを意識するのは非常に重要です。次元を考えるだけで、未知の量の性質や既存の量との関係を見抜く手がかりになります。これは、数学で未知数を x と置く操作とは本質的に異なり、物理学の根幹に関わる概念です。
+                    物理学は数学を道具として発展してきました。高校物理でも、すでに数学の重要な概念が用いられています。例えば、運動の記述には「ベクトル」の考え方が不可欠であり、波の性質を理解するには「三角関数」が必要です。これらは、高校数学の範囲でも学びますが、物理ではそれらを単なる計算手法ではなく、現象を定量的に理解するための道具として用います。そして、より本質的に物理現象を記述するためには、本来「微分・積分」が不可欠ですが、高校物理では意図的に避けられています。大学以降の学びでは、数学的ツールをより自由に使えるようになり、物理の理論が少数の基本法則から統一的に導かれる様子が実感できるでしょう。
                 </div>
                 <div class="long-text">
-                    物理法則とは、次元を持つ個々の物理量同士を結びつけるものです。深い考察を通じて数式の持つ意味を見出せるようになることこそ、物理学の醍醐味と言えます。高校数学と物理学の基礎を固めることで、大学での学びに確かな土台を築くことができます。
+                    こうした背景を踏まえれば、高校時代から「なぜそうなるのか」を意識し、教科書を論理的に読み解く習慣を身につけることの重要性がわかります。特に、力学はシンプルな体系を持ち、物理の考え方を鍛える最良の練習になります。また、物理を学ぶ上で、物理量が次元（単位）を持つことを意識するのは非常に重要です。次元を考えるだけで、未知の量の性質や既存の量との関係を見抜く手がかりになります。これは、数学で未知数を x と置く操作以上の意味を持っており、物理学の根幹に関わる概念です。
+                </div>
+                <div class="long-text">
+                    物理法則とは、次元を持つ個々の物理量同士を結びつけるものです。深い考察を通じて数式の持つ意味を見出せるようになることこそ、物理学の醍醐味と言えます。そして、こうした論理的体系を実感する場として、難関大学の入試問題が挙げられます。入試問題は単なる知識の確認ではなく、限られた数の原理から物理現象をどこまで説明できるかを試すものでもあります。高校数学と物理学の基礎を固め、思考力を鍛えることで、大学での学びに確かな土台を築くことができます。
                 </div>
 
                 <h2>京都産業大学 理学部 宇宙物理・気象学科で学べること</h2>
@@ -432,7 +461,6 @@
                 <div class="long-text">
                     いずれの分野でも、数学・物理学・データサイエンスといった基礎的なツールが重要であり、共通言語として活用されています。卒業後は大学院に進学する学生もいれば、民間企業に就職する学生もいますが、本学科では、どの進路でも活躍できる高度な理系人材の育成を目指しています。
                 </div>
-
                 <h2>大学院での研究指導を希望する方へ</h2>
                 <h3>博士前期課程（修士課程）</h3>
                 <div class="long-text">
@@ -461,12 +489,17 @@
                 <div class="long-text">
                     英語についても、研究室に長期の外国人ビジターが滞在したり、外国籍の研究員が在籍していたことが、英語による研究活動を当たり前にできるようにする上で非常に役に立ちました。英会話については、まずメンタルバリアを打ち破ることが重要です。本研究室では、海外の研究機関との共同研究が活発に行われており、数値計算が中心的な研究手法となっています。そのため、大学院進学後には、実践を通じて英語やプログラミングを身につけられる環境が整っています。
                 </div>
+            </div>
+            <div class="tab-panel" id="tab8">
                 <h2>当研究室で研究したい研究者の方へ</h2>
                 <div class="long-text">
                     京都産業大学は、日本学術振興会（学振）<a href="https://www.jsps.go.jp/j-pd/">特別研究員</a>の<b><a href="https://www.jsps.go.jp/j-pd/pd-koyou/tourokukikan.html">雇用制度導入機関</a></b>です。特別研究員(PD, RPD)として採用された場合は、従来の学振からの「研究奨励金」相当の額が本学からの給与として支給され、加えて社会保険等への加入が可能です。本研究室でも学振研究員を受け入れた実績があります。例年、春頃が申請の季節ですので、興味をお持ちの方は、本研究室に直接お問い合わせください。
                 </div>
                 <div class="long-text">
                     その他、科研費等財源による雇用の研究員の募集の際には、このホームページでも周知する予定ですので、適宜ご確認ください。
+                </div>
+                <div class="long-text">
+                    <font color="red">令和8年度採用開始の学振特別研究員の応募については、4月30日(水)が申請に必要なID・パスワード発行申込の期限、5月16日(金)が電子申請システムを通じた申請書類の提出期限です。本研究室での受け入れを希望する場合は、十分に余裕を持ってコンタクトしてください。</font>
                 </div>
             </div>
 
