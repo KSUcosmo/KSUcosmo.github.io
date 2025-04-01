@@ -44,6 +44,23 @@
             font-size: 16px;
             transition: background 0.3s;
         }
+        @media (max-width: 768px) { /* スマホ向け調整 */
+            .tabs {
+                flex-direction: column; /* 縦並びに変更 */
+                height: auto; /* 高さを固定しない */
+            }
+            .tab-buttons {
+                flex-direction: row; /* タブを横並びに */
+                width: 100%; /* 全幅 */
+                height: auto; /* 高さを固定しない */
+                border-right: none;
+                border-bottom: 1px solid #ccc;
+            }
+            .tab-button {
+                flex: 1; /* 均等に並べる */
+                text-align: center;
+            }
+        }
         /* アクティブなタブボタン */
         .tab-button.active {
             background: gray;
@@ -76,6 +93,7 @@
         }
         .text-content {
             flex: 1; /* テキスト側を柔軟に広げる */
+            min-width: 300px; /* 必要に応じて調整 */
         }
 
         .image-content {
@@ -83,6 +101,17 @@
             text-align: center;
         }
 
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column; /* スマホでは縦並びに */
+            }
+            .image-content {
+                order: 2; /* 画像を後に表示 */
+            }
+            .text-content {
+                order: 1; /* テキストを先に表示 */
+            }
+        }
         .panel-image {
             max-width: 100%;
             height: auto;
