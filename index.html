@@ -33,6 +33,7 @@
             -webkit-overflow-scrolling: touch; /* スムーズスクロール */
             gap: 5px;
             width: 150px; /* タブの横幅 */
+            min-width: 150px;  /* 最低でも150pxの幅を確保 */
             background: #f0f0f0;
             border-right: 1px solid #ccc;
             height: 100%; /* 縦スクロールしないように固定 */
@@ -41,7 +42,6 @@
         .tab-button {
             width: 100%;
             padding: 15px;
-            min-width: 150px;  /* 最低でも150pxの幅を確保 */
             border: none;
             background: #e0e0e0;
             text-align: left;
