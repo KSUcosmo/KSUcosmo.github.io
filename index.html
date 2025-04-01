@@ -27,7 +27,11 @@
         /* タブボタンのコンテナ（左側） */
         .tab-buttons {
             display: flex;
+            overflow-x: auto;  /* 横スクロールを許可 */
+            white-space: nowrap; /* 折り返しを防ぐ */
             flex-direction: column;
+            -webkit-overflow-scrolling: touch; /* スムーズスクロール */
+            gap: 5px;
             width: 150px; /* タブの横幅 */
             background: #f0f0f0;
             border-right: 1px solid #ccc;
@@ -59,6 +63,8 @@
             .tab-button {
                 flex: 1; /* 均等に並べる */
                 text-align: center;
+                font-size: 14px; /* フォントサイズを小さく */
+                padding: 8px 10px; /* タブの余白を減らす */
             }
         }
         /* アクティブなタブボタン */
