@@ -58,6 +58,13 @@
             font-size: 16px;
             transition: background 0.3s;
         }
+        .tab-button:hover {
+            background: #d2d9e3;
+        }
+        .tab-button:focus-visible {
+            outline: 3px solid #1976d2;
+            outline-offset: -3px;
+        }
         @media (max-width: 768px) { /* スマホ向け調整 */
             .tabs {
                 flex-direction: column; /* 縦並びに変更 */
@@ -71,10 +78,19 @@
                 border-bottom: 1px solid #ccc;
             }
             .tab-button {
-                flex: 1; /* 均等に並べる */
+                flex: 0 0 auto; /* ラベルを潰さず横スクロールさせる */
                 text-align: center;
                 font-size: 14px; /* フォントサイズを小さく */
                 padding: 8px 10px; /* タブの余白を減らす */
+            }
+            .tab-content {
+                max-height: none;
+                height: auto;
+                padding: 16px;
+            }
+            p,
+            .long-text {
+                text-align: left;
             }
         }
         /* アクティブなタブボタン */
@@ -292,19 +308,19 @@
     </div>
     <div class="tabs">
         <!-- タブボタン -->
-        <div class="tab-buttons">
-            <button class="tab-button active" data-tab="tab1">About</button>
-            <button class="tab-button" data-tab="tab2">Team</button>
-            <button class="tab-button" data-tab="tab3">Partners</button>
-            <button class="tab-button" data-tab="tab4">Research</button>
-            <button class="tab-button" data-tab="tab5">SNS</button>
-            <button class="tab-button" data-tab="tab6">Access</button>
-            <button class="tab-button" data-tab="tab7">Message</button>
-            <button class="tab-button" data-tab="tab8">Opportunity</button>
-            <button class="tab-button" data-tab="tab9">Lectures</button>
+        <div class="tab-buttons" role="tablist" aria-label="研究室サイト内メニュー">
+            <button class="tab-button active" id="tab-about" data-tab="about" role="tab" aria-controls="about" aria-selected="true" tabindex="0">研究室紹介</button>
+            <button class="tab-button" id="tab-research" data-tab="research" role="tab" aria-controls="research" aria-selected="false" tabindex="-1">研究内容・成果</button>
+            <button class="tab-button" id="tab-team" data-tab="team" role="tab" aria-controls="team" aria-selected="false" tabindex="-1">メンバー・進路</button>
+            <button class="tab-button" id="tab-students" data-tab="students" role="tab" aria-controls="students" aria-selected="false" tabindex="-1">学生のみなさんへ</button>
+            <button class="tab-button" id="tab-partners" data-tab="partners" role="tab" aria-controls="partners" aria-selected="false" tabindex="-1">共同研究</button>
+            <button class="tab-button" id="tab-opportunity" data-tab="opportunity" role="tab" aria-controls="opportunity" aria-selected="false" tabindex="-1">研究員募集</button>
+            <button class="tab-button" id="tab-news" data-tab="news" role="tab" aria-controls="news" aria-selected="false" tabindex="-1">研究室の近況</button>
+            <button class="tab-button" id="tab-access" data-tab="access" role="tab" aria-controls="access" aria-selected="false" tabindex="-1">アクセス</button>
+            <button class="tab-button" id="tab-lectures" data-tab="lectures" role="tab" aria-controls="lectures" aria-selected="false" tabindex="-1">講義資料</button>
         </div>
         <div class="tab-content">
-            <div class="tab-panel active" id="tab1">
+            <div class="tab-panel active" id="about" role="tabpanel" aria-labelledby="tab-about">
                 <h1>京都産業大学 宇宙論研究室</h1>
                 <h4><a href="https://www.kyoto-su.ac.jp/faculty/sc/">理学部</a> <a href="https://www.kyoto-su.ac.jp/faculty/sc/uchu.html">宇宙物理・気象学科</a> / 同大学院 <a href="https://www.kyoto-su.ac.jp/graduateschool/g_sc/">理学研究科</a> <a href="https://www.kyoto-su.ac.jp/graduateschool/g_sc/g_ph/index.html">物理学専攻</a></h4>
 
@@ -317,7 +333,7 @@
                     </div>
                     <div class="image-content">
                         <figure>
-                            <img src="lss.jpg" class="panel-image">
+                            <img src="lss.jpg" class="panel-image" alt="数値シミュレーションによって再現された宇宙の大規模構造">
                             <figcaption>数値シミュレーションによって再現された宇宙の大規模構造</figcaption>
                         </figure>
                     </div>
@@ -372,7 +388,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="tab-panel" id="tab2">
+            <div class="tab-panel" id="team" role="tabpanel" aria-labelledby="tab-team" hidden>
                 <h2>メンバー</h2>
                 <p>（2026年4月現在）</p>
                 <h3>スタッフ</h3>
@@ -422,7 +438,7 @@
                     <li>Yet to come...</li>
                 </ul>
             </div>
-            <div class="tab-panel" id="tab3">
+            <div class="tab-panel" id="partners" role="tabpanel" aria-labelledby="tab-partners" hidden>
                 <h2>主な共同研究パートナー </h2>
                 <ul>
                     <li>東京大学 <a href="https://www.ipmu.jp/ja">カブリ数物連携宇宙研究機構(Kavli IPMU)</a>：<a href="https://db.ipmu.jp/member/personal/662ja.html">客員科学研究員</a>として併任</li>
@@ -439,7 +455,7 @@
                 </ul>
                 (2026年7月現在、定期的なミーティングを継続中または同一科研費等参加中の共同研究者の所属研究機関)
             </div>
-            <div class="tab-panel" id="tab4">
+            <div class="tab-panel" id="research" role="tabpanel" aria-labelledby="tab-research" hidden>
                 <h2>研究成果のプレスリリース</h2>
                 <ul>
                     <li><a href="http://www.kyoto-u.ac.jp/ja/research/research_results/2019/191008_2.html">宇宙の大規模構造の複雑な統計パターンを高速予言する人工知能（AI）ツールを開発 －宇宙ビッグデータのAI分析に向けて</a></li>
@@ -466,6 +482,27 @@
                     <li><a href="https://fugaku100kei.jp/index.php/promoting-research/four-areas#anchor4">「次世代宇宙論サーベイ群のための多波長宇宙論的シミュレーション」</a><br>
                         <span>「富岳」成果創出加速プログラム 領域：基礎科学の発展、新領域 2023年4月 - 2026年3月
                         （研究協力者）</span></li>
+                    <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-21H01081">「標準宇宙モデルの破れをあぶり出す大規模銀河サーベイの新奇観測プローブの開拓」</a><br>
+                        <span>日本学術振興会 科学研究費助成事業 基盤研究(B) 2021年4月 - 2025年3月
+                        （研究分担者）</span></li>
+                    <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PLANNED-20H05861">「宇宙構造形成理論から迫るダークマター」</a><br>
+                        <span>日本学術振興会 科学研究費助成事業 学術変革領域研究(A) 2020年11月 - 2025年3月
+                        （研究分担者、担当：シミュレーション・空間統計・予言ツール）</span></li>
+                    <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-19H00677">「すばる精密宇宙論によるダークマター、ダークエネルギーおよび背景重力波の究明」</a><br>
+                        <span>日本学術振興会 科学研究費助成事業 基盤研究(A) 2019年4月 - 2024年3月
+                        （研究分担者）</span></li>
+                    <li><a href="https://www.jst.go.jp/kisoken/aip/program/research/aip2020.html">「革新的画像解析技術を用いた広域宇宙撮像データ分析」</a><br>
+                        <span>科学技術振興機構（JST）戦略的創造研究推進事業 AIP加速課題 2020年4月 - 2023年3月
+                        （主たる共同研究者、西道グループ：統計量高速計算器・エミュレータ開発）</span></li>
+                    <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-17K14273">「計算統計に立脚した宇宙論解析のための理論的基盤の開発」</a><br>
+                        <span>日本学術振興会 科学研究費助成事業 若手研究(B) 2017年4月 - 2021年3月
+                        （研究代表者）</span></li>
+                    <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-10J00181">「宇宙の大規模構造を用いた暗黒エネルギー及びインフレーションの研究」</a><br>
+                        <span>日本学術振興会 科学研究費助成事業 特別研究員奨励費 2010年4月 - 2013年3月
+                        （研究代表者）</span></li>
+                    <li><a href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-07J07066">「バリオン振動を用いたダークエネルギー探査と銀河バイアスの非線形効果」</a><br>
+                        <span>日本学術振興会 科学研究費助成事業 特別研究員奨励費 2007年4月 - 2010年3月
+                        （研究代表者）</span></li>
                 </ul>
                 <h2>公開研究ソフトウェア</h2>
                 <ul>
@@ -486,7 +523,7 @@
                     <span class="project"><a href="https://www.esa.int/Science_Exploration/Space_Science/Euclid"><b>Euclid</b></a></span>
                 </div>
             </div>
-            <div class="tab-panel" id="tab5">
+            <div class="tab-panel" id="news" role="tabpanel" aria-labelledby="tab-news" hidden>
                 <h2>情報発信</h2>
                 <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DW8jnmDE0Pu/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DW8jnmDE0Pu/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">この投稿をInstagramで見る</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DW8jnmDE0Pu/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">京都産業大学宇宙論研究室(@ksucosmo)がシェアした投稿</a></p></div></blockquote>
 <script async src="https://www.instagram.com/embed.js"></script>
@@ -507,7 +544,7 @@
 		<!-- <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">うちの研究員の小林さんが大活躍でした！彼のアリゾナ時代から取り組んでいた国際共同研究の成果が、ようやく出版されました！<a href="https://t.co/dtee7YZLEZ">https://t.co/dtee7YZLEZ</a><a href="https://twitter.com/hashtag/%E5%AE%87%E5%AE%99%E3%81%AE%E4%BA%AC%E7%94%A3%E5%A4%A7?src=hash&amp;ref_src=twsrc%5Etfw">#宇宙の京産大</a> <a href="https://twitter.com/hashtag/%E5%AE%87%E5%AE%99%E8%AB%96?src=hash&amp;ref_src=twsrc%5Etfw">#宇宙論</a> <a href="https://twitter.com/hashtag/%E5%9B%BD%E9%9A%9B%E5%85%B1%E5%90%8C%E7%A0%94%E7%A9%B6?src=hash&amp;ref_src=twsrc%5Etfw">#国際共同研究</a> <a href="https://twitter.com/hashtag/%E4%BA%AC%E7%94%A3%E5%A4%A7?src=hash&amp;ref_src=twsrc%5Etfw">#京産大</a> <a href="https://twitter.com/hashtag/%E4%BA%AC%E9%83%BD%E7%94%A3%E6%A5%AD%E5%A4%A7%E5%AD%A6?src=hash&amp;ref_src=twsrc%5Etfw">#京都産業大学</a> <a href="https://twitter.com/hashtag/%E7%90%86%E5%AD%A6%E9%83%A8?src=hash&amp;ref_src=twsrc%5Etfw">#理学部</a> <a href="https://twitter.com/hashtag/%E5%AE%87%E5%AE%99%E7%89%A9%E7%90%86%E6%B0%97%E8%B1%A1%E5%AD%A6%E7%A7%91?src=hash&amp;ref_src=twsrc%5Etfw">#宇宙物理気象学科</a> <a href="https://twitter.com/hashtag/%E8%8B%A5%E6%89%8B%E7%A0%94%E7%A9%B6%E8%80%85?src=hash&amp;ref_src=twsrc%5Etfw">#若手研究者</a></p>&mdash; 京都産業大学 宇宙論研究室 (@KSUCosmo) <a href="https://twitter.com/KSUCosmo/status/1968952309091541299?ref_src=twsrc%5Etfw">September 19, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 		<!-- <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">うちの院生の皆さん、ちょっと背伸びして頑張ってもらっています！<a href="https://t.co/RiZJylnSAq">https://t.co/RiZJylnSAq</a><a href="https://twitter.com/hashtag/%E5%AE%87%E5%AE%99%E3%81%AE%E4%BA%AC%E7%94%A3%E5%A4%A7?src=hash&amp;ref_src=twsrc%5Etfw">#宇宙の京産大</a> <a href="https://twitter.com/hashtag/%E5%A4%A7%E5%AD%A6%E9%99%A2%E6%95%99%E8%82%B2?src=hash&amp;ref_src=twsrc%5Etfw">#大学院教育</a></p>&mdash; 京都産業大学 宇宙論研究室 (@KSUCosmo) <a href="https://twitter.com/KSUCosmo/status/1934544772473172157?ref_src=twsrc%5Etfw">June 16, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
             </div>
-            <div class="tab-panel" id="tab6">
+            <div class="tab-panel" id="access" role="tabpanel" aria-labelledby="tab-access" hidden>
                 <h2>所在地</h2>
                 <p>〒603-8555 京都市北区上賀茂本山 京都産業大学 万有館3F B314研究室</p>
                 <h3>アクセス</h3>
@@ -528,7 +565,7 @@
                     <li><a href="https://www.kyoto-su.ac.jp/bus/">京都産業大学シャトルバス運行情報</a></li>
                 </ul>
             </div>
-            <div class="tab-panel" id="tab7">
+            <div class="tab-panel" id="students" role="tabpanel" aria-labelledby="tab-students" hidden>
                 <h1>宇宙論を本気で学び、研究したい人へ</h1>
                 <h2>研究室からのメッセージ</h2>
                 <div class="long-text">
@@ -584,7 +621,7 @@
                     本研究室では数値計算と国際共同研究が日常的な研究活動の一部です。英語もプログラミングも、資格や知識として先に完成させるのではなく、論文を読み、コードを動かし、議論し、成果を発表する実践の中で身につけます。その前提として、学部レベルの数学・物理と、日本語の専門書を論理的に読みこなす力を求めます。
                 </div>
             </div>
-            <div class="tab-panel" id="tab8">
+            <div class="tab-panel" id="opportunity" role="tabpanel" aria-labelledby="tab-opportunity" hidden>
                 <h2>当研究室で研究したい研究者の方へ</h2>
                 <p>
                     京都産業大学は、日本学術振興会（学振）<a href="https://www.jsps.go.jp/j-pd/">特別研究員</a>の<b><a href="https://www.jsps.go.jp/j-pd/pd-koyou/tourokukikan.html">雇用制度導入機関</a></b>です。特別研究員(PD, RPD)として採用された場合は、従来の学振からの「研究奨励金」相当の額が本学からの給与として支給され、加えて社会保険等への加入が可能です。本研究室でも学振研究員を受け入れた実績があります。例年、春頃が申請の季節ですので、興味をお持ちの方は、本研究室に直接お問い合わせください。
@@ -596,7 +633,7 @@
                     <font color="red">令和9年度採用開始の学振特別研究員の応募については、4月24日(金)が申請に必要なID・パスワード発行申込の期限、5月13日(水)が電子申請システムを通じた申請書類の提出期限です。本研究室での受け入れを希望する場合は、十分に余裕を持ってお早めにコンタクトしてください。</font>
                 </p>
             </div>
-            <div class="tab-panel" id="tab9">
+            <div class="tab-panel" id="lectures" role="tabpanel" aria-labelledby="tab-lectures" hidden>
                 <h2>担当講義資料へのアクセス(要パスワード)</h2>
                 <p> <a href="https://www.cc.kyoto-su.ac.jp/~a006802/lectures/R8/math_ex1.php">数学演習1</a> </p>
                 <p> <a href="https://www.cc.kyoto-su.ac.jp/~a006802/lectures/R8/relativity.php">相対論</a> </p>
@@ -620,19 +657,64 @@
         </div>
     </div>
     <script>
-        // タブ切り替えのスクリプト
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', function() {
-                // すべてのタブボタンの active クラスを解除
-                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active'); // クリックしたボタンをアクティブに
+        const tabButtons = Array.from(document.querySelectorAll('.tab-button'));
+        const tabPanels = Array.from(document.querySelectorAll('.tab-panel'));
+        const tabContent = document.querySelector('.tab-content');
 
-                // すべてのタブコンテンツを非表示
-                document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
-                // 選択したタブのコンテンツを表示
-                document.getElementById(this.dataset.tab).classList.add('active');
+        function activateTab(tabId, { updateHash = true, moveFocus = false } = {}) {
+            const nextButton = tabButtons.find(button => button.dataset.tab === tabId);
+            const nextPanel = document.getElementById(tabId);
+            if (!nextButton || !nextPanel) return;
+
+            tabButtons.forEach(button => {
+                const isActive = button === nextButton;
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-selected', String(isActive));
+                button.tabIndex = isActive ? 0 : -1;
+            });
+
+            tabPanels.forEach(panel => {
+                const isActive = panel === nextPanel;
+                panel.classList.toggle('active', isActive);
+                panel.hidden = !isActive;
+            });
+
+            tabContent.scrollTop = 0;
+            if (moveFocus) nextButton.focus();
+            if (updateHash && window.location.hash !== `#${tabId}`) {
+                history.pushState(null, '', `#${tabId}`);
+            }
+        }
+
+        tabButtons.forEach((button, index) => {
+            button.addEventListener('click', () => activateTab(button.dataset.tab));
+            button.addEventListener('keydown', event => {
+                let nextIndex = null;
+                if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+                    nextIndex = (index + 1) % tabButtons.length;
+                } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+                    nextIndex = (index - 1 + tabButtons.length) % tabButtons.length;
+                } else if (event.key === 'Home') {
+                    nextIndex = 0;
+                } else if (event.key === 'End') {
+                    nextIndex = tabButtons.length - 1;
+                }
+
+                if (nextIndex !== null) {
+                    event.preventDefault();
+                    activateTab(tabButtons[nextIndex].dataset.tab, { moveFocus: true });
+                }
             });
         });
+
+        function activateTabFromHash() {
+            const requestedTab = window.location.hash.slice(1);
+            activateTab(requestedTab || 'about', { updateHash: false });
+        }
+
+        window.addEventListener('hashchange', activateTabFromHash);
+        window.addEventListener('popstate', activateTabFromHash);
+        activateTabFromHash();
 
         // 自動的に現在の西暦を表示するためのスクリプト
         document.getElementById('current-year').textContent = new Date().getFullYear();
